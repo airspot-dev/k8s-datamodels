@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "k8s-datamodels"
+version = "1.23.8"
+authors = [
+  { name="Alberto Degli Esposti @Airspot", email="alberto@airspot.tech" },
+]
+description = "Kubernetes specs Pydantic datamodels"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.7"
+requires = [
+    "pydantic",
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/airspot-dev/k8s-datamodels"
