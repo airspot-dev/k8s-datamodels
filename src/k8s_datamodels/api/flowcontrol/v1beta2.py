@@ -57,6 +57,10 @@ class QueuingConfiguration(BaseModel):
         description='`queues` is the number of queues for this priority level. The queues exist independently at each apiserver. The value must be positive.  Setting it to 1 effectively precludes shufflesharding and thus makes the distinguisher method of associated flow schemas irrelevant.  This field has a default value of 64.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ResourcePolicyRule(BaseModel):
     apiGroups: List[str] = Field(
@@ -79,6 +83,10 @@ class ResourcePolicyRule(BaseModel):
         ...,
         description='`verbs` is a list of matching verbs and may not be empty. "*" matches all verbs and, if present, must be the only entry. Required.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ServiceAccountSubject(BaseModel):
@@ -120,11 +128,19 @@ class FlowSchemaCondition(BaseModel):
         None, description='`type` is the type of the condition. Required.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FlowSchemaStatus(BaseModel):
     conditions: Optional[List[FlowSchemaCondition]] = Field(
         None, description='`conditions` is a list of the current states of FlowSchema.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class LimitResponse(BaseModel):
@@ -137,6 +153,10 @@ class LimitResponse(BaseModel):
         description='`type` is "Queue" or "Reject". "Queue" means that requests that can not be executed upon arrival are held in a queue until they can be executed or a queuing limit is reached. "Reject" means that requests that can not be executed upon arrival are rejected. Required.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LimitedPriorityLevelConfiguration(BaseModel):
     assuredConcurrencyShares: Optional[int] = Field(
@@ -147,6 +167,10 @@ class LimitedPriorityLevelConfiguration(BaseModel):
         {},
         description='`limitResponse` indicates what to do with requests that can not be executed right now',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PriorityLevelConfigurationCondition(BaseModel):
@@ -170,6 +194,10 @@ class PriorityLevelConfigurationCondition(BaseModel):
         None, description='`type` is the type of the condition. Required.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PriorityLevelConfigurationSpec(BaseModel):
     limited: Optional[LimitedPriorityLevelConfiguration] = Field(
@@ -181,11 +209,19 @@ class PriorityLevelConfigurationSpec(BaseModel):
         description='`type` indicates whether this priority level is subject to limitation on request execution.  A value of `"Exempt"` means that requests of this priority level are not subject to a limit (and thus are never queued) and do not detract from the capacity made available to other priority levels.  A value of `"Limited"` means that (a) requests of this priority level _are_ subject to limits and (b) some of the server\'s limited capacity is made available exclusively to this priority level. Required.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PriorityLevelConfigurationStatus(BaseModel):
     conditions: Optional[List[PriorityLevelConfigurationCondition]] = Field(
         None, description='`conditions` is the current state of "request-priority".'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Subject(BaseModel):
@@ -203,6 +239,10 @@ class Subject(BaseModel):
         None, description='`user` matches based on username.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PolicyRulesWithSubjects(BaseModel):
     nonResourceRules: Optional[List[NonResourcePolicyRule]] = Field(
@@ -217,6 +257,10 @@ class PolicyRulesWithSubjects(BaseModel):
         ...,
         description='subjects is the list of normal user, serviceaccount, or group that this rule cares about. There must be at least one member in this slice. A slice that includes both the system:authenticated and system:unauthenticated user groups matches every request. Required.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PriorityLevelConfiguration(BaseModel):
@@ -241,6 +285,10 @@ class PriorityLevelConfiguration(BaseModel):
         description='`status` is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PriorityLevelConfigurationList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -258,6 +306,10 @@ class PriorityLevelConfigurationList(BaseModel):
         {},
         description="`metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FlowSchemaSpec(BaseModel):
@@ -277,6 +329,10 @@ class FlowSchemaSpec(BaseModel):
         None,
         description='`rules` describes which requests will match this flow schema. This FlowSchema matches a request if and only if at least one member of rules matches the request. if it is an empty slice, there will be no requests matching the FlowSchema.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FlowSchema(BaseModel):
@@ -301,6 +357,10 @@ class FlowSchema(BaseModel):
         description='`status` is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FlowSchemaList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -318,3 +378,7 @@ class FlowSchemaList(BaseModel):
         {},
         description='`metadata` is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

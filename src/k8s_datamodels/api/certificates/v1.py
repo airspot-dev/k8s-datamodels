@@ -45,6 +45,10 @@ class CertificateSigningRequestSpec(BaseModel):
         description='username contains the name of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CertificateSigningRequestCondition(BaseModel):
     lastTransitionTime: Optional[v1.TimeModel10] = Field(
@@ -71,6 +75,10 @@ class CertificateSigningRequestCondition(BaseModel):
         description='type of the condition. Known conditions are "Approved", "Denied", and "Failed".\n\nAn "Approved" condition is added via the /approval subresource, indicating the request was approved and should be issued by the signer.\n\nA "Denied" condition is added via the /approval subresource, indicating the request was denied and should not be issued by the signer.\n\nA "Failed" condition is added via the /status subresource, indicating the signer failed to issue the certificate.\n\nApproved and Denied conditions are mutually exclusive. Approved, Denied, and Failed conditions cannot be removed once added.\n\nOnly one condition of a given type is allowed.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CertificateSigningRequestStatus(BaseModel):
     certificate: Optional[str] = Field(
@@ -81,6 +89,10 @@ class CertificateSigningRequestStatus(BaseModel):
         None,
         description='conditions applied to the request. Known conditions are "Approved", "Denied", and "Failed".',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class CertificateSigningRequest(BaseModel):
@@ -102,6 +114,10 @@ class CertificateSigningRequest(BaseModel):
         description='status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CertificateSigningRequestList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -116,3 +132,7 @@ class CertificateSigningRequestList(BaseModel):
         description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
     metadata: Optional[v1.ListMetaModel10] = {}
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

@@ -82,6 +82,10 @@ class AWSElasticBlockStoreVolumeSource(BaseModel):
         description='volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class AzureDiskVolumeSource(BaseModel):
     cachingMode: Optional[str] = Field(
@@ -107,6 +111,10 @@ class AzureDiskVolumeSource(BaseModel):
         description='readOnly Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class AzureFileVolumeSource(BaseModel):
     readOnly: Optional[bool] = Field(
@@ -118,6 +126,10 @@ class AzureFileVolumeSource(BaseModel):
         description='secretName is the  name of secret that contains Azure Storage Account Name and Key',
     )
     shareName: str = Field(..., description='shareName is the azure share Name')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Capabilities(BaseModel):
@@ -167,6 +179,10 @@ class ContainerPort(BaseModel):
         description='Protocol for port. Must be UDP, TCP, or SCTP. Defaults to "TCP".\n\n',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ExecAction(BaseModel):
     command: Optional[List[str]] = Field(
@@ -194,6 +210,10 @@ class FCVolumeSource(BaseModel):
         None,
         description='wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.',
     )
+    
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FlockerVolumeSource(BaseModel):
@@ -205,6 +225,10 @@ class FlockerVolumeSource(BaseModel):
         None,
         description='datasetUUID is the UUID of the dataset. This is unique identifier of a Flocker dataset',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class GCEPersistentDiskVolumeSource(BaseModel):
@@ -225,6 +249,10 @@ class GCEPersistentDiskVolumeSource(BaseModel):
         description='readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class GRPCAction(BaseModel):
     port: int = Field(
@@ -236,6 +264,10 @@ class GRPCAction(BaseModel):
         description='Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\nIf this is not specified, the default behavior is defined by gRPC.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class GitRepoVolumeSource(BaseModel):
     directory: Optional[str] = Field(
@@ -246,6 +278,10 @@ class GitRepoVolumeSource(BaseModel):
     revision: Optional[str] = Field(
         None, description='revision is the commit hash for the specified revision.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class GlusterfsVolumeSource(BaseModel):
@@ -261,6 +297,10 @@ class GlusterfsVolumeSource(BaseModel):
         None,
         description='readOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class HTTPHeader(BaseModel):
@@ -284,6 +324,10 @@ class HostPathVolumeSource(BaseModel):
         None,
         description='type for HostPath Volume Defaults to "" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class KeyToPath(BaseModel):
@@ -318,6 +362,10 @@ class NFSVolumeSource(BaseModel):
         ...,
         description='server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NodeSelectorRequirement(BaseModel):
@@ -361,6 +409,10 @@ class PersistentVolumeClaimVolumeSource(BaseModel):
         description='readOnly Will force the ReadOnly setting in VolumeMounts. Default false.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PhotonPersistentDiskVolumeSource(BaseModel):
     fsType: Optional[str] = Field(
@@ -371,6 +423,10 @@ class PhotonPersistentDiskVolumeSource(BaseModel):
         ...,
         description='pdID is the ID that identifies Photon Controller persistent disk',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PodDNSConfigOption(BaseModel):
@@ -404,6 +460,10 @@ class PortworxVolumeSource(BaseModel):
     volumeID: str = Field(
         ..., description='volumeID uniquely identifies a Portworx volume'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PreferredSchedulingTerm(BaseModel):
@@ -441,6 +501,10 @@ class QuobyteVolumeSource(BaseModel):
         description='volume is a string that references an already created Quobyte volume by name.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class RBDVolumeSource(BaseModel):
     fsType: Optional[str] = Field(
@@ -476,6 +540,10 @@ class RBDVolumeSource(BaseModel):
         description='user is the rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SELinuxOptions(BaseModel):
     level: Optional[str] = Field(
@@ -490,6 +558,10 @@ class SELinuxOptions(BaseModel):
     user: Optional[str] = Field(
         None, description='User is a SELinux user label that applies to the container.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ScaleIOVolumeSource(BaseModel):
@@ -533,6 +605,10 @@ class ScaleIOVolumeSource(BaseModel):
         description='volumeName is the name of a volume already created in the ScaleIO system that is associated with this volume source.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SeccompProfile(BaseModel):
     localhostProfile: Optional[str] = Field(
@@ -544,6 +620,10 @@ class SeccompProfile(BaseModel):
         description='type indicates which kind of seccomp profile will be applied. Valid options are:\n\nLocalhost - a profile defined in a file on the node should be used. RuntimeDefault - the container runtime default profile should be used. Unconfined - no profile should be applied.\n\n',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SecretEnvSource(BaseModel):
     name: Optional[str] = Field(
@@ -553,6 +633,10 @@ class SecretEnvSource(BaseModel):
     optional: Optional[bool] = Field(
         None, description='Specify whether the Secret must be defined'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class SecretKeySelector(BaseModel):
@@ -568,6 +652,10 @@ class SecretKeySelector(BaseModel):
         None, description='Specify whether the Secret or its key must be defined'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SecretProjection(BaseModel):
     items: Optional[List[KeyToPath]] = Field(
@@ -582,6 +670,10 @@ class SecretProjection(BaseModel):
         None,
         description='optional field specify whether the Secret or its key must be defined',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class SecretVolumeSource(BaseModel):
@@ -602,6 +694,10 @@ class SecretVolumeSource(BaseModel):
         description="secretName is the name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ServiceAccountTokenProjection(BaseModel):
     audience: Optional[str] = Field(
@@ -616,6 +712,10 @@ class ServiceAccountTokenProjection(BaseModel):
         ...,
         description='path is the path relative to the mount point of the file to project the token into.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StorageOSVolumeSource(BaseModel):
@@ -639,6 +739,10 @@ class StorageOSVolumeSource(BaseModel):
         None,
         description='volumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod\'s namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Sysctl(BaseModel):
@@ -668,6 +772,10 @@ class TolerationModel(BaseModel):
         description='Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class TypedLocalObjectReference(BaseModel):
     apiGroup: Optional[str] = Field(
@@ -676,6 +784,10 @@ class TypedLocalObjectReference(BaseModel):
     )
     kind: str = Field(..., description='Kind is the type of resource being referenced')
     name: str = Field(..., description='Name is the name of resource being referenced')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class VolumeDevice(BaseModel):
@@ -712,6 +824,10 @@ class VolumeMount(BaseModel):
         description='Expanded path within the volume from which the container\'s volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container\'s environment. Defaults to "" (volume\'s root). SubPathExpr and SubPath are mutually exclusive.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class VsphereVirtualDiskVolumeSource(BaseModel):
     fsType: Optional[str] = Field(
@@ -729,6 +845,10 @@ class VsphereVirtualDiskVolumeSource(BaseModel):
     volumePath: str = Field(
         ..., description='volumePath is the path that identifies vSphere volume vmdk'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class WindowsSecurityContextOptions(BaseModel):
@@ -749,6 +869,10 @@ class WindowsSecurityContextOptions(BaseModel):
         description='The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class AWSElasticBlockStoreVolumeSourceModel(BaseModel):
     fsType: Optional[str] = Field(
@@ -767,6 +891,10 @@ class AWSElasticBlockStoreVolumeSourceModel(BaseModel):
         ...,
         description='volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class AzureDiskVolumeSourceModel(BaseModel):
@@ -793,6 +921,10 @@ class AzureDiskVolumeSourceModel(BaseModel):
         description='readOnly Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class AzureFilePersistentVolumeSource(BaseModel):
     readOnly: Optional[bool] = Field(
@@ -808,6 +940,10 @@ class AzureFilePersistentVolumeSource(BaseModel):
         description='secretNamespace is the namespace of the secret that contains Azure Storage Account Name and Key default is the same as the Pod',
     )
     shareName: str = Field(..., description='shareName is the azure Share Name')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FCVolumeSourceModel(BaseModel):
@@ -830,6 +966,10 @@ class FCVolumeSourceModel(BaseModel):
         description='wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FlockerVolumeSourceModel(BaseModel):
     datasetName: Optional[str] = Field(
@@ -840,6 +980,10 @@ class FlockerVolumeSourceModel(BaseModel):
         None,
         description='datasetUUID is the UUID of the dataset. This is unique identifier of a Flocker dataset',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class GCEPersistentDiskVolumeSourceModel(BaseModel):
@@ -860,6 +1004,10 @@ class GCEPersistentDiskVolumeSourceModel(BaseModel):
         description='readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class GlusterfsPersistentVolumeSource(BaseModel):
     endpoints: str = Field(
@@ -879,6 +1027,10 @@ class GlusterfsPersistentVolumeSource(BaseModel):
         description='readOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class HostPathVolumeSourceModel(BaseModel):
     path: str = Field(
@@ -890,6 +1042,10 @@ class HostPathVolumeSourceModel(BaseModel):
         description='type for HostPath Volume Defaults to "" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LocalVolumeSource(BaseModel):
     fsType: Optional[str] = Field(
@@ -900,6 +1056,10 @@ class LocalVolumeSource(BaseModel):
         ...,
         description='path of the full path to the volume on the node. It can be either a directory or block device (disk, partition, ...).',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NFSVolumeSourceModel(BaseModel):
@@ -916,6 +1076,10 @@ class NFSVolumeSourceModel(BaseModel):
         description='server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NodeSelectorRequirementModel(BaseModel):
     key: str = Field(..., description='The label key that the selector applies to.')
@@ -928,6 +1092,10 @@ class NodeSelectorRequirementModel(BaseModel):
         description='An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NodeSelectorTermModel(BaseModel):
     matchExpressions: Optional[List[NodeSelectorRequirementModel]] = Field(
@@ -936,6 +1104,10 @@ class NodeSelectorTermModel(BaseModel):
     matchFields: Optional[List[NodeSelectorRequirementModel]] = Field(
         None, description="A list of node selector requirements by node's fields."
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectReferenceModel(BaseModel):
@@ -965,6 +1137,10 @@ class ObjectReferenceModel(BaseModel):
         description='UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PhotonPersistentDiskVolumeSourceModel(BaseModel):
     fsType: Optional[str] = Field(
@@ -975,6 +1151,10 @@ class PhotonPersistentDiskVolumeSourceModel(BaseModel):
         ...,
         description='pdID is the ID that identifies Photon Controller persistent disk',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PortworxVolumeSourceModel(BaseModel):
@@ -989,6 +1169,10 @@ class PortworxVolumeSourceModel(BaseModel):
     volumeID: str = Field(
         ..., description='volumeID uniquely identifies a Portworx volume'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class QuobyteVolumeSourceModel(BaseModel):
@@ -1015,6 +1199,10 @@ class QuobyteVolumeSourceModel(BaseModel):
         description='volume is a string that references an already created Quobyte volume by name.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SecretReference(BaseModel):
     name: Optional[str] = Field(
@@ -1025,6 +1213,10 @@ class SecretReference(BaseModel):
         None,
         description='namespace defines the space within which the secret name must be unique.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StorageOSPersistentVolumeSource(BaseModel):
@@ -1049,6 +1241,10 @@ class StorageOSPersistentVolumeSource(BaseModel):
         description='volumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod\'s namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class TopologySelectorLabelRequirement(BaseModel):
     key: str = Field(..., description='The label key that the selector applies to.')
@@ -1062,6 +1258,10 @@ class TopologySelectorTerm(BaseModel):
     matchLabelExpressions: Optional[List[TopologySelectorLabelRequirement]] = Field(
         None, description='A list of topology selector requirements by labels.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class VsphereVirtualDiskVolumeSourceModel(BaseModel):
@@ -1081,6 +1281,10 @@ class VsphereVirtualDiskVolumeSourceModel(BaseModel):
         ..., description='volumePath is the path that identifies vSphere volume vmdk'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EventSource(BaseModel):
     component: Optional[str] = Field(
@@ -1089,6 +1293,10 @@ class EventSource(BaseModel):
     host: Optional[str] = Field(
         None, description='Node name on which the event is generated.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectReferenceModel1(BaseModel):
@@ -1118,6 +1326,10 @@ class ObjectReferenceModel1(BaseModel):
         description='UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PortStatus(BaseModel):
     error: Optional[str] = Field(
@@ -1133,6 +1345,10 @@ class PortStatus(BaseModel):
         description='Protocol is the protocol of the service port of which status is recorded here The supported values are: "TCP", "UDP", "SCTP"\n\n',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class TypedLocalObjectReferenceModel(BaseModel):
     apiGroup: Optional[str] = Field(
@@ -1141,6 +1357,10 @@ class TypedLocalObjectReferenceModel(BaseModel):
     )
     kind: str = Field(..., description='Kind is the type of resource being referenced')
     name: str = Field(..., description='Name is the name of resource being referenced')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class AWSElasticBlockStoreVolumeSourceModel1(BaseModel):
@@ -1160,6 +1380,10 @@ class AWSElasticBlockStoreVolumeSourceModel1(BaseModel):
         ...,
         description='volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class AttachedVolume(BaseModel):
@@ -1194,6 +1418,10 @@ class AzureDiskVolumeSourceModel1(BaseModel):
         description='readOnly Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class AzureFilePersistentVolumeSourceModel(BaseModel):
     readOnly: Optional[bool] = Field(
@@ -1210,6 +1438,10 @@ class AzureFilePersistentVolumeSourceModel(BaseModel):
     )
     shareName: str = Field(..., description='shareName is the azure Share Name')
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class AzureFileVolumeSourceModel(BaseModel):
     readOnly: Optional[bool] = Field(
@@ -1222,10 +1454,18 @@ class AzureFileVolumeSourceModel(BaseModel):
     )
     shareName: str = Field(..., description='shareName is the azure share Name')
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CapabilitiesModel(BaseModel):
     add: Optional[List[str]] = Field(None, description='Added capabilities')
     drop: Optional[List[str]] = Field(None, description='Removed capabilities')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ClientIPConfig(BaseModel):
@@ -1233,6 +1473,10 @@ class ClientIPConfig(BaseModel):
         None,
         description='timeoutSeconds specifies the seconds of ClientIP type session sticky time. The value must be >0 && <=86400(for 1 day) if ServiceAffinity == "ClientIP". Default value is 10800(for 3 hours).',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ComponentCondition(BaseModel):
@@ -1252,6 +1496,10 @@ class ComponentCondition(BaseModel):
         ..., description='Type of condition for a component. Valid value: "Healthy"'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ConfigMapEnvSourceModel(BaseModel):
     name: Optional[str] = Field(
@@ -1261,6 +1509,10 @@ class ConfigMapEnvSourceModel(BaseModel):
     optional: Optional[bool] = Field(
         None, description='Specify whether the ConfigMap must be defined'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ConfigMapKeySelectorModel(BaseModel):
@@ -1272,6 +1524,10 @@ class ConfigMapKeySelectorModel(BaseModel):
     optional: Optional[bool] = Field(
         None, description='Specify whether the ConfigMap or its key must be defined'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ConfigMapNodeConfigSource(BaseModel):
@@ -1296,6 +1552,10 @@ class ConfigMapNodeConfigSource(BaseModel):
         description='UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ContainerImage(BaseModel):
     names: Optional[List[str]] = Field(
@@ -1305,6 +1565,10 @@ class ContainerImage(BaseModel):
     sizeBytes: Optional[int] = Field(
         None, description='The size of the image in bytes.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ContainerPortModel(BaseModel):
@@ -1328,6 +1592,10 @@ class ContainerPortModel(BaseModel):
         description='Protocol for port. Must be UDP, TCP, or SCTP. Defaults to "TCP".\n\n',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ContainerStateWaiting(BaseModel):
     message: Optional[str] = Field(
@@ -1336,6 +1604,10 @@ class ContainerStateWaiting(BaseModel):
     reason: Optional[str] = Field(
         None, description='(brief) reason the container is not yet running.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class DaemonEndpoint(BaseModel):
@@ -1357,6 +1629,10 @@ class EndpointPort(BaseModel):
         description='The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.\n\n',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EventSourceModel(BaseModel):
     component: Optional[str] = Field(
@@ -1366,12 +1642,20 @@ class EventSourceModel(BaseModel):
         None, description='Node name on which the event is generated.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ExecActionModel(BaseModel):
     command: Optional[List[str]] = Field(
         None,
         description="Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FCVolumeSourceModel1(BaseModel):
@@ -1394,6 +1678,10 @@ class FCVolumeSourceModel1(BaseModel):
         description='wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FlockerVolumeSourceModel1(BaseModel):
     datasetName: Optional[str] = Field(
@@ -1404,6 +1692,10 @@ class FlockerVolumeSourceModel1(BaseModel):
         None,
         description='datasetUUID is the UUID of the dataset. This is unique identifier of a Flocker dataset',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class GCEPersistentDiskVolumeSourceModel1(BaseModel):
@@ -1424,6 +1716,10 @@ class GCEPersistentDiskVolumeSourceModel1(BaseModel):
         description='readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class GRPCActionModel(BaseModel):
     port: int = Field(
@@ -1435,6 +1731,10 @@ class GRPCActionModel(BaseModel):
         description='Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\nIf this is not specified, the default behavior is defined by gRPC.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class GitRepoVolumeSourceModel(BaseModel):
     directory: Optional[str] = Field(
@@ -1445,6 +1745,10 @@ class GitRepoVolumeSourceModel(BaseModel):
     revision: Optional[str] = Field(
         None, description='revision is the commit hash for the specified revision.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class GlusterfsPersistentVolumeSourceModel(BaseModel):
@@ -1465,6 +1769,10 @@ class GlusterfsPersistentVolumeSourceModel(BaseModel):
         description='readOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class GlusterfsVolumeSourceModel(BaseModel):
     endpoints: str = Field(
@@ -1480,6 +1788,10 @@ class GlusterfsVolumeSourceModel(BaseModel):
         description='readOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class HTTPHeaderModel(BaseModel):
     name: str = Field(..., description='The header field name')
@@ -1492,6 +1804,10 @@ class HostAliasModel(BaseModel):
     )
     ip: Optional[str] = Field(None, description='IP address of the host file entry.')
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class HostPathVolumeSourceModel1(BaseModel):
     path: str = Field(
@@ -1502,6 +1818,10 @@ class HostPathVolumeSourceModel1(BaseModel):
         None,
         description='type for HostPath Volume Defaults to "" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class KeyToPathModel(BaseModel):
@@ -1515,12 +1835,20 @@ class KeyToPathModel(BaseModel):
         description="path is the relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LocalObjectReferenceModel(BaseModel):
     name: Optional[str] = Field(
         None,
         description='Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class LocalVolumeSourceModel(BaseModel):
@@ -1532,6 +1860,10 @@ class LocalVolumeSourceModel(BaseModel):
         ...,
         description='path of the full path to the volume on the node. It can be either a directory or block device (disk, partition, ...).',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NFSVolumeSourceModel1(BaseModel):
@@ -1548,12 +1880,20 @@ class NFSVolumeSourceModel1(BaseModel):
         description='server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NamespaceSpec(BaseModel):
     finalizers: Optional[List[str]] = Field(
         None,
         description='Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NodeAddress(BaseModel):
@@ -1567,6 +1907,10 @@ class NodeConfigSource(BaseModel):
     configMap: Optional[ConfigMapNodeConfigSource] = Field(
         None, description="ConfigMap is a reference to a Node's ConfigMap"
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NodeConfigStatus(BaseModel):
@@ -1587,11 +1931,19 @@ class NodeConfigStatus(BaseModel):
         description="LastKnownGood reports the checkpointed config the node will fall back to when it encounters an error attempting to use the Assigned config. The Assigned config becomes the LastKnownGood config when the node determines that the Assigned config is stable and correct. This is currently implemented as a 10-minute soak period starting when the local record of Assigned config is updated. If the Assigned config is Active at the end of this period, it becomes the LastKnownGood. Note that if Spec.ConfigSource is reset to nil (use local defaults), the LastKnownGood is also immediately reset to nil, because the local default config is always assumed good. You should not make assumptions about the node's method of determining config stability and correctness, as this may change or become configurable in the future.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NodeDaemonEndpoints(BaseModel):
     kubeletEndpoint: Optional[DaemonEndpoint] = Field(
         {}, description='Endpoint on which Kubelet is listening.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NodeSelectorRequirementModel1(BaseModel):
@@ -1605,6 +1957,10 @@ class NodeSelectorRequirementModel1(BaseModel):
         description='An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NodeSelectorTermModel1(BaseModel):
     matchExpressions: Optional[List[NodeSelectorRequirementModel1]] = Field(
@@ -1613,6 +1969,10 @@ class NodeSelectorTermModel1(BaseModel):
     matchFields: Optional[List[NodeSelectorRequirementModel1]] = Field(
         None, description="A list of node selector requirements by node's fields."
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NodeSystemInfo(BaseModel):
@@ -1658,6 +2018,10 @@ class ObjectFieldSelectorModel(BaseModel):
         ..., description='Path of the field to select in the specified API version.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ObjectReferenceModel2(BaseModel):
     apiVersion: Optional[str] = Field(None, description='API version of the referent.')
@@ -1686,6 +2050,10 @@ class ObjectReferenceModel2(BaseModel):
         description='UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PersistentVolumeClaimVolumeSourceModel(BaseModel):
     claimName: str = Field(
@@ -1696,6 +2064,10 @@ class PersistentVolumeClaimVolumeSourceModel(BaseModel):
         None,
         description='readOnly Will force the ReadOnly setting in VolumeMounts. Default false.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PersistentVolumeStatus(BaseModel):
@@ -1712,6 +2084,10 @@ class PersistentVolumeStatus(BaseModel):
         description='reason is a brief CamelCase string that describes any failure and is meant for machine parsing and tidy display in the CLI.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PhotonPersistentDiskVolumeSourceModel1(BaseModel):
     fsType: Optional[str] = Field(
@@ -1723,16 +2099,28 @@ class PhotonPersistentDiskVolumeSourceModel1(BaseModel):
         description='pdID is the ID that identifies Photon Controller persistent disk',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodDNSConfigOptionModel(BaseModel):
     name: Optional[str] = Field(None, description='Required.')
     value: Optional[str] = None
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PodIP(BaseModel):
     ip: Optional[str] = Field(
         None, description='ip is an IP address (IPv4 or IPv6) assigned to the pod'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PodOSModel(BaseModel):
@@ -1763,6 +2151,10 @@ class PortStatusModel(BaseModel):
         description='Protocol is the protocol of the service port of which status is recorded here The supported values are: "TCP", "UDP", "SCTP"\n\n',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PortworxVolumeSourceModel1(BaseModel):
     fsType: Optional[str] = Field(
@@ -1776,6 +2168,10 @@ class PortworxVolumeSourceModel1(BaseModel):
     volumeID: str = Field(
         ..., description='volumeID uniquely identifies a Portworx volume'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PreferredSchedulingTermModel(BaseModel):
@@ -1813,6 +2209,10 @@ class QuobyteVolumeSourceModel1(BaseModel):
         description='volume is a string that references an already created Quobyte volume by name.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class RBDVolumeSourceModel(BaseModel):
     fsType: Optional[str] = Field(
@@ -1848,6 +2248,10 @@ class RBDVolumeSourceModel(BaseModel):
         description='user is the rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SELinuxOptionsModel(BaseModel):
     level: Optional[str] = Field(
@@ -1862,6 +2266,10 @@ class SELinuxOptionsModel(BaseModel):
     user: Optional[str] = Field(
         None, description='User is a SELinux user label that applies to the container.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ScaleIOVolumeSourceModel(BaseModel):
@@ -1905,6 +2313,10 @@ class ScaleIOVolumeSourceModel(BaseModel):
         description='volumeName is the name of a volume already created in the ScaleIO system that is associated with this volume source.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ScopedResourceSelectorRequirement(BaseModel):
     operator: str = Field(
@@ -1919,6 +2331,10 @@ class ScopedResourceSelectorRequirement(BaseModel):
         description='An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SeccompProfileModel(BaseModel):
     localhostProfile: Optional[str] = Field(
@@ -1930,6 +2346,10 @@ class SeccompProfileModel(BaseModel):
         description='type indicates which kind of seccomp profile will be applied. Valid options are:\n\nLocalhost - a profile defined in a file on the node should be used. RuntimeDefault - the container runtime default profile should be used. Unconfined - no profile should be applied.\n\n',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SecretEnvSourceModel(BaseModel):
     name: Optional[str] = Field(
@@ -1939,6 +2359,10 @@ class SecretEnvSourceModel(BaseModel):
     optional: Optional[bool] = Field(
         None, description='Specify whether the Secret must be defined'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class SecretKeySelectorModel(BaseModel):
@@ -1953,6 +2377,10 @@ class SecretKeySelectorModel(BaseModel):
     optional: Optional[bool] = Field(
         None, description='Specify whether the Secret or its key must be defined'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class SecretProjectionModel(BaseModel):
@@ -1969,6 +2397,10 @@ class SecretProjectionModel(BaseModel):
         description='optional field specify whether the Secret or its key must be defined',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SecretReferenceModel(BaseModel):
     name: Optional[str] = Field(
@@ -1979,6 +2411,10 @@ class SecretReferenceModel(BaseModel):
         None,
         description='namespace defines the space within which the secret name must be unique.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class SecretVolumeSourceModel(BaseModel):
@@ -1999,6 +2435,10 @@ class SecretVolumeSourceModel(BaseModel):
         description="secretName is the name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ServiceAccountTokenProjectionModel(BaseModel):
     audience: Optional[str] = Field(
@@ -2014,12 +2454,20 @@ class ServiceAccountTokenProjectionModel(BaseModel):
         description='path is the path relative to the mount point of the file to project the token into.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SessionAffinityConfig(BaseModel):
     clientIP: Optional[ClientIPConfig] = Field(
         None,
         description='clientIP contains the configurations of Client IP based session affinity.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StorageOSPersistentVolumeSourceModel(BaseModel):
@@ -2044,6 +2492,10 @@ class StorageOSPersistentVolumeSourceModel(BaseModel):
         description='volumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod\'s namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StorageOSVolumeSourceModel(BaseModel):
     fsType: Optional[str] = Field(
@@ -2066,6 +2518,10 @@ class StorageOSVolumeSourceModel(BaseModel):
         None,
         description='volumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod\'s namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class SysctlModel(BaseModel):
@@ -2095,6 +2551,10 @@ class TolerationModel1(BaseModel):
         description='Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class TypedLocalObjectReferenceModel1(BaseModel):
     apiGroup: Optional[str] = Field(
@@ -2103,6 +2563,10 @@ class TypedLocalObjectReferenceModel1(BaseModel):
     )
     kind: str = Field(..., description='Kind is the type of resource being referenced')
     name: str = Field(..., description='Name is the name of resource being referenced')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class VolumeDeviceModel(BaseModel):
@@ -2139,6 +2603,10 @@ class VolumeMountModel(BaseModel):
         description='Expanded path within the volume from which the container\'s volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container\'s environment. Defaults to "" (volume\'s root). SubPathExpr and SubPath are mutually exclusive.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class VsphereVirtualDiskVolumeSourceModel1(BaseModel):
     fsType: Optional[str] = Field(
@@ -2156,6 +2624,10 @@ class VsphereVirtualDiskVolumeSourceModel1(BaseModel):
     volumePath: str = Field(
         ..., description='volumePath is the path that identifies vSphere volume vmdk'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class WindowsSecurityContextOptionsModel(BaseModel):
@@ -2176,6 +2648,10 @@ class WindowsSecurityContextOptionsModel(BaseModel):
         description='The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class AWSElasticBlockStoreVolumeSourceModel2(BaseModel):
     fsType: Optional[str] = Field(
@@ -2194,6 +2670,10 @@ class AWSElasticBlockStoreVolumeSourceModel2(BaseModel):
         ...,
         description='volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class AzureDiskVolumeSourceModel2(BaseModel):
@@ -2220,6 +2700,10 @@ class AzureDiskVolumeSourceModel2(BaseModel):
         description='readOnly Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class AzureFileVolumeSourceModel1(BaseModel):
     readOnly: Optional[bool] = Field(
@@ -2232,10 +2716,18 @@ class AzureFileVolumeSourceModel1(BaseModel):
     )
     shareName: str = Field(..., description='shareName is the azure share Name')
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CapabilitiesModel1(BaseModel):
     add: Optional[List[str]] = Field(None, description='Added capabilities')
     drop: Optional[List[str]] = Field(None, description='Removed capabilities')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ConfigMapEnvSourceModel1(BaseModel):
@@ -2247,6 +2739,10 @@ class ConfigMapEnvSourceModel1(BaseModel):
         None, description='Specify whether the ConfigMap must be defined'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ConfigMapKeySelectorModel1(BaseModel):
     key: str = Field(..., description='The key to select.')
@@ -2257,6 +2753,10 @@ class ConfigMapKeySelectorModel1(BaseModel):
     optional: Optional[bool] = Field(
         None, description='Specify whether the ConfigMap or its key must be defined'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ContainerPortModel1(BaseModel):
@@ -2280,12 +2780,20 @@ class ContainerPortModel1(BaseModel):
         description='Protocol for port. Must be UDP, TCP, or SCTP. Defaults to "TCP".\n\n',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ExecActionModel1(BaseModel):
     command: Optional[List[str]] = Field(
         None,
         description="Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FCVolumeSourceModel2(BaseModel):
@@ -2308,6 +2816,10 @@ class FCVolumeSourceModel2(BaseModel):
         description='wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FlockerVolumeSourceModel2(BaseModel):
     datasetName: Optional[str] = Field(
@@ -2318,6 +2830,10 @@ class FlockerVolumeSourceModel2(BaseModel):
         None,
         description='datasetUUID is the UUID of the dataset. This is unique identifier of a Flocker dataset',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class GCEPersistentDiskVolumeSourceModel2(BaseModel):
@@ -2338,6 +2854,10 @@ class GCEPersistentDiskVolumeSourceModel2(BaseModel):
         description='readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class GRPCActionModel1(BaseModel):
     port: int = Field(
@@ -2349,6 +2869,10 @@ class GRPCActionModel1(BaseModel):
         description='Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\n\nIf this is not specified, the default behavior is defined by gRPC.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class GitRepoVolumeSourceModel1(BaseModel):
     directory: Optional[str] = Field(
@@ -2359,6 +2883,10 @@ class GitRepoVolumeSourceModel1(BaseModel):
     revision: Optional[str] = Field(
         None, description='revision is the commit hash for the specified revision.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class GlusterfsVolumeSourceModel1(BaseModel):
@@ -2375,6 +2903,10 @@ class GlusterfsVolumeSourceModel1(BaseModel):
         description='readOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class HTTPHeaderModel1(BaseModel):
     name: str = Field(..., description='The header field name')
@@ -2387,6 +2919,10 @@ class HostAliasModel1(BaseModel):
     )
     ip: Optional[str] = Field(None, description='IP address of the host file entry.')
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class HostPathVolumeSourceModel2(BaseModel):
     path: str = Field(
@@ -2397,6 +2933,10 @@ class HostPathVolumeSourceModel2(BaseModel):
         None,
         description='type for HostPath Volume Defaults to "" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class KeyToPathModel1(BaseModel):
@@ -2410,12 +2950,20 @@ class KeyToPathModel1(BaseModel):
         description="path is the relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LocalObjectReferenceModel1(BaseModel):
     name: Optional[str] = Field(
         None,
         description='Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NFSVolumeSourceModel2(BaseModel):
@@ -2432,6 +2980,10 @@ class NFSVolumeSourceModel2(BaseModel):
         description='server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NodeSelectorRequirementModel2(BaseModel):
     key: str = Field(..., description='The label key that the selector applies to.')
@@ -2444,6 +2996,10 @@ class NodeSelectorRequirementModel2(BaseModel):
         description='An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NodeSelectorTermModel2(BaseModel):
     matchExpressions: Optional[List[NodeSelectorRequirementModel2]] = Field(
@@ -2452,6 +3008,10 @@ class NodeSelectorTermModel2(BaseModel):
     matchFields: Optional[List[NodeSelectorRequirementModel2]] = Field(
         None, description="A list of node selector requirements by node's fields."
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectFieldSelectorModel1(BaseModel):
@@ -2462,6 +3022,10 @@ class ObjectFieldSelectorModel1(BaseModel):
     fieldPath: str = Field(
         ..., description='Path of the field to select in the specified API version.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectReferenceModel3(BaseModel):
@@ -2491,6 +3055,10 @@ class ObjectReferenceModel3(BaseModel):
         description='UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PersistentVolumeClaimVolumeSourceModel1(BaseModel):
     claimName: str = Field(
@@ -2501,6 +3069,10 @@ class PersistentVolumeClaimVolumeSourceModel1(BaseModel):
         None,
         description='readOnly Will force the ReadOnly setting in VolumeMounts. Default false.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PhotonPersistentDiskVolumeSourceModel2(BaseModel):
@@ -2513,10 +3085,18 @@ class PhotonPersistentDiskVolumeSourceModel2(BaseModel):
         description='pdID is the ID that identifies Photon Controller persistent disk',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodDNSConfigOptionModel1(BaseModel):
     name: Optional[str] = Field(None, description='Required.')
     value: Optional[str] = None
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PodOSModel1(BaseModel):
@@ -2545,6 +3125,10 @@ class PortworxVolumeSourceModel2(BaseModel):
     volumeID: str = Field(
         ..., description='volumeID uniquely identifies a Portworx volume'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PreferredSchedulingTermModel1(BaseModel):
@@ -2582,6 +3166,10 @@ class QuobyteVolumeSourceModel2(BaseModel):
         description='volume is a string that references an already created Quobyte volume by name.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class RBDVolumeSourceModel1(BaseModel):
     fsType: Optional[str] = Field(
@@ -2617,6 +3205,10 @@ class RBDVolumeSourceModel1(BaseModel):
         description='user is the rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SELinuxOptionsModel1(BaseModel):
     level: Optional[str] = Field(
@@ -2631,6 +3223,10 @@ class SELinuxOptionsModel1(BaseModel):
     user: Optional[str] = Field(
         None, description='User is a SELinux user label that applies to the container.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ScaleIOVolumeSourceModel1(BaseModel):
@@ -2674,6 +3270,10 @@ class ScaleIOVolumeSourceModel1(BaseModel):
         description='volumeName is the name of a volume already created in the ScaleIO system that is associated with this volume source.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SeccompProfileModel1(BaseModel):
     localhostProfile: Optional[str] = Field(
@@ -2685,6 +3285,10 @@ class SeccompProfileModel1(BaseModel):
         description='type indicates which kind of seccomp profile will be applied. Valid options are:\n\nLocalhost - a profile defined in a file on the node should be used. RuntimeDefault - the container runtime default profile should be used. Unconfined - no profile should be applied.\n\n',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SecretEnvSourceModel1(BaseModel):
     name: Optional[str] = Field(
@@ -2694,6 +3298,10 @@ class SecretEnvSourceModel1(BaseModel):
     optional: Optional[bool] = Field(
         None, description='Specify whether the Secret must be defined'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class SecretKeySelectorModel1(BaseModel):
@@ -2709,6 +3317,10 @@ class SecretKeySelectorModel1(BaseModel):
         None, description='Specify whether the Secret or its key must be defined'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SecretProjectionModel1(BaseModel):
     items: Optional[List[KeyToPathModel1]] = Field(
@@ -2723,6 +3335,10 @@ class SecretProjectionModel1(BaseModel):
         None,
         description='optional field specify whether the Secret or its key must be defined',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class SecretVolumeSourceModel1(BaseModel):
@@ -2743,6 +3359,10 @@ class SecretVolumeSourceModel1(BaseModel):
         description="secretName is the name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ServiceAccountTokenProjectionModel1(BaseModel):
     audience: Optional[str] = Field(
@@ -2757,6 +3377,10 @@ class ServiceAccountTokenProjectionModel1(BaseModel):
         ...,
         description='path is the path relative to the mount point of the file to project the token into.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StorageOSVolumeSourceModel1(BaseModel):
@@ -2780,6 +3404,10 @@ class StorageOSVolumeSourceModel1(BaseModel):
         None,
         description='volumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod\'s namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class SysctlModel1(BaseModel):
@@ -2809,6 +3437,10 @@ class TolerationModel2(BaseModel):
         description='Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class TypedLocalObjectReferenceModel2(BaseModel):
     apiGroup: Optional[str] = Field(
@@ -2817,6 +3449,10 @@ class TypedLocalObjectReferenceModel2(BaseModel):
     )
     kind: str = Field(..., description='Kind is the type of resource being referenced')
     name: str = Field(..., description='Name is the name of resource being referenced')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class VolumeDeviceModel1(BaseModel):
@@ -2853,6 +3489,10 @@ class VolumeMountModel1(BaseModel):
         description='Expanded path within the volume from which the container\'s volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container\'s environment. Defaults to "" (volume\'s root). SubPathExpr and SubPath are mutually exclusive.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class VsphereVirtualDiskVolumeSourceModel2(BaseModel):
     fsType: Optional[str] = Field(
@@ -2870,6 +3510,10 @@ class VsphereVirtualDiskVolumeSourceModel2(BaseModel):
     volumePath: str = Field(
         ..., description='volumePath is the path that identifies vSphere volume vmdk'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class WindowsSecurityContextOptionsModel1(BaseModel):
@@ -2889,6 +3533,10 @@ class WindowsSecurityContextOptionsModel1(BaseModel):
         None,
         description='The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class CSIVolumeSource(BaseModel):
@@ -2912,6 +3560,10 @@ class CSIVolumeSource(BaseModel):
         None,
         description="volumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values.",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class CephFSVolumeSource(BaseModel):
@@ -2940,6 +3592,10 @@ class CephFSVolumeSource(BaseModel):
         description='user is optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CinderVolumeSource(BaseModel):
     fsType: Optional[str] = Field(
@@ -2959,6 +3615,10 @@ class CinderVolumeSource(BaseModel):
         description='volumeID used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ConfigMapProjection(BaseModel):
     items: Optional[List[KeyToPath]] = Field(
@@ -2973,6 +3633,10 @@ class ConfigMapProjection(BaseModel):
         None,
         description='optional specify whether the ConfigMap or its keys must be defined',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ConfigMapVolumeSource(BaseModel):
@@ -2993,6 +3657,10 @@ class ConfigMapVolumeSource(BaseModel):
         description='optional specify whether the ConfigMap or its keys must be defined',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EmptyDirVolumeSource(BaseModel):
     medium: Optional[str] = Field(
@@ -3003,6 +3671,10 @@ class EmptyDirVolumeSource(BaseModel):
         None,
         description='sizeLimit is the total amount of local storage required for this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class EnvFromSource(BaseModel):
@@ -3016,6 +3688,10 @@ class EnvFromSource(BaseModel):
     secretRef: Optional[SecretEnvSource] = Field(
         None, description='The Secret to select from'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FlexVolumeSource(BaseModel):
@@ -3039,6 +3715,10 @@ class FlexVolumeSource(BaseModel):
         description='secretRef is Optional: secretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class HTTPGetAction(BaseModel):
     host: Optional[str] = Field(
@@ -3058,6 +3738,10 @@ class HTTPGetAction(BaseModel):
         None,
         description='Scheme to use for connecting to the host. Defaults to HTTP.\n\n',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ISCSIVolumeSource(BaseModel):
@@ -3100,6 +3784,10 @@ class ISCSIVolumeSource(BaseModel):
         description='targetPortal is iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NodeSelector(BaseModel):
     nodeSelectorTerms: List[NodeSelectorTerm] = Field(
@@ -3125,6 +3813,10 @@ class PersistentVolumeClaimCondition(BaseModel):
     )
     status: str
     type: str
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PersistentVolumeClaimStatus(BaseModel):
@@ -3153,6 +3845,10 @@ class PersistentVolumeClaimStatus(BaseModel):
         description='resizeStatus stores status of resize operation. ResizeStatus is not set by default but when expansion is complete resizeStatus is set to empty string by resize controller or kubelet. This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodDNSConfig(BaseModel):
     nameservers: Optional[List[str]] = Field(
@@ -3167,6 +3863,10 @@ class PodDNSConfig(BaseModel):
         None,
         description='A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PodSecurityContext(BaseModel):
@@ -3211,6 +3911,10 @@ class PodSecurityContext(BaseModel):
         description="The Windows specific settings applied to all containers. If unspecified, the options within a container's SecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is linux.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ResourceFieldSelector(BaseModel):
     containerName: Optional[str] = Field(
@@ -3222,6 +3926,10 @@ class ResourceFieldSelector(BaseModel):
     )
     resource: str = Field(..., description='Required: resource to select')
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ResourceRequirements(BaseModel):
     limits: Optional[Dict[str, resource.QuantityModel2]] = Field(
@@ -3232,6 +3940,10 @@ class ResourceRequirements(BaseModel):
         None,
         description='Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class SecurityContext(BaseModel):
@@ -3280,6 +3992,10 @@ class SecurityContext(BaseModel):
         description='The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is linux.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class TCPSocketAction(BaseModel):
     host: Optional[str] = Field(
@@ -3289,6 +4005,10 @@ class TCPSocketAction(BaseModel):
         ...,
         description='Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class CSIPersistentVolumeSource(BaseModel):
@@ -3332,6 +4052,10 @@ class CSIPersistentVolumeSource(BaseModel):
         description='volumeHandle is the unique volume name returned by the CSI volume plugin’s CreateVolume to refer to the volume on all subsequent calls. Required.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CephFSPersistentVolumeSource(BaseModel):
     monitors: List[str] = Field(
@@ -3359,6 +4083,10 @@ class CephFSPersistentVolumeSource(BaseModel):
         description='user is Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CinderPersistentVolumeSource(BaseModel):
     fsType: Optional[str] = Field(
@@ -3377,6 +4105,10 @@ class CinderPersistentVolumeSource(BaseModel):
         ...,
         description='volumeID used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FlexPersistentVolumeSource(BaseModel):
@@ -3399,6 +4131,10 @@ class FlexPersistentVolumeSource(BaseModel):
         None,
         description='secretRef is Optional: SecretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ISCSIPersistentVolumeSource(BaseModel):
@@ -3441,6 +4177,10 @@ class ISCSIPersistentVolumeSource(BaseModel):
         description='targetPortal is iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NodeSelectorModel(BaseModel):
     nodeSelectorTerms: List[NodeSelectorTermModel] = Field(
@@ -3481,6 +4221,10 @@ class RBDPersistentVolumeSource(BaseModel):
         None,
         description='user is the rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ScaleIOPersistentVolumeSource(BaseModel):
@@ -3524,11 +4268,19 @@ class ScaleIOPersistentVolumeSource(BaseModel):
         description='volumeName is the name of a volume already created in the ScaleIO system that is associated with this volume source.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class VolumeNodeAffinity(BaseModel):
     required: Optional[NodeSelectorModel] = Field(
         None, description='required specifies hard node constraints that must be met.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class LoadBalancerIngress(BaseModel):
@@ -3545,12 +4297,20 @@ class LoadBalancerIngress(BaseModel):
         description='Ports is a list of records of service ports If used, every port defined in the service should have an entry in it',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LoadBalancerStatus(BaseModel):
     ingress: Optional[List[LoadBalancerIngress]] = Field(
         None,
         description='Ingress is a list containing ingress points for the load-balancer. Traffic intended for the service should be sent to these ingress points.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class CSIPersistentVolumeSourceModel(BaseModel):
@@ -3594,6 +4354,10 @@ class CSIPersistentVolumeSourceModel(BaseModel):
         description='volumeHandle is the unique volume name returned by the CSI volume plugin’s CreateVolume to refer to the volume on all subsequent calls. Required.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CSIVolumeSourceModel(BaseModel):
     driver: str = Field(
@@ -3616,6 +4380,10 @@ class CSIVolumeSourceModel(BaseModel):
         None,
         description="volumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values.",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class CephFSPersistentVolumeSourceModel(BaseModel):
@@ -3644,6 +4412,10 @@ class CephFSPersistentVolumeSourceModel(BaseModel):
         description='user is Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CephFSVolumeSourceModel(BaseModel):
     monitors: List[str] = Field(
@@ -3671,6 +4443,10 @@ class CephFSVolumeSourceModel(BaseModel):
         description='user is optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CinderPersistentVolumeSourceModel(BaseModel):
     fsType: Optional[str] = Field(
@@ -3689,6 +4465,10 @@ class CinderPersistentVolumeSourceModel(BaseModel):
         ...,
         description='volumeID used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class CinderVolumeSourceModel(BaseModel):
@@ -3709,6 +4489,10 @@ class CinderVolumeSourceModel(BaseModel):
         description='volumeID used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ConfigMapProjectionModel(BaseModel):
     items: Optional[List[KeyToPathModel]] = Field(
@@ -3723,6 +4507,10 @@ class ConfigMapProjectionModel(BaseModel):
         None,
         description='optional specify whether the ConfigMap or its keys must be defined',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ConfigMapVolumeSourceModel(BaseModel):
@@ -3743,11 +4531,19 @@ class ConfigMapVolumeSourceModel(BaseModel):
         description='optional specify whether the ConfigMap or its keys must be defined',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ContainerStateRunning(BaseModel):
     startedAt: Optional[v1.TimeModel18] = Field(
         {}, description='Time at which the container was last (re-)started'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ContainerStateTerminated(BaseModel):
@@ -3773,6 +4569,10 @@ class ContainerStateTerminated(BaseModel):
         {}, description='Time at which previous execution of the container started'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EmptyDirVolumeSourceModel(BaseModel):
     medium: Optional[str] = Field(
@@ -3783,6 +4583,10 @@ class EmptyDirVolumeSourceModel(BaseModel):
         None,
         description='sizeLimit is the total amount of local storage required for this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class EndpointAddress(BaseModel):
@@ -3799,6 +4603,10 @@ class EndpointAddress(BaseModel):
         None, description='Reference to object providing the endpoint.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EndpointSubset(BaseModel):
     addresses: Optional[List[EndpointAddress]] = Field(
@@ -3813,6 +4621,10 @@ class EndpointSubset(BaseModel):
         None, description='Port numbers available on the related IP addresses.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EnvFromSourceModel(BaseModel):
     configMapRef: Optional[ConfigMapEnvSourceModel] = Field(
@@ -3826,6 +4638,10 @@ class EnvFromSourceModel(BaseModel):
         None, description='The Secret to select from'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EventSeries(BaseModel):
     count: Optional[int] = Field(
@@ -3835,6 +4651,10 @@ class EventSeries(BaseModel):
     lastObservedTime: Optional[v1.MicroTimeModel] = Field(
         {}, description='Time of the last occurrence observed'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FlexPersistentVolumeSourceModel(BaseModel):
@@ -3858,6 +4678,10 @@ class FlexPersistentVolumeSourceModel(BaseModel):
         description='secretRef is Optional: SecretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FlexVolumeSourceModel(BaseModel):
     driver: str = Field(
@@ -3880,6 +4704,10 @@ class FlexVolumeSourceModel(BaseModel):
         description='secretRef is Optional: secretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class HTTPGetActionModel(BaseModel):
     host: Optional[str] = Field(
@@ -3899,6 +4727,10 @@ class HTTPGetActionModel(BaseModel):
         None,
         description='Scheme to use for connecting to the host. Defaults to HTTP.\n\n',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ISCSIPersistentVolumeSourceModel(BaseModel):
@@ -3941,6 +4773,10 @@ class ISCSIPersistentVolumeSourceModel(BaseModel):
         description='targetPortal is iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ISCSIVolumeSourceModel(BaseModel):
     chapAuthDiscovery: Optional[bool] = Field(
@@ -3982,6 +4818,10 @@ class ISCSIVolumeSourceModel(BaseModel):
         description='targetPortal is iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LimitRangeItem(BaseModel):
     default: Optional[Dict[str, resource.QuantityModel5]] = Field(
@@ -4003,6 +4843,10 @@ class LimitRangeItem(BaseModel):
         None, description='Min usage constraints on this kind by resource name.'
     )
     type: str = Field(..., description='Type of resource that this limit applies to.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class LimitRangeSpec(BaseModel):
@@ -4026,12 +4870,20 @@ class LoadBalancerIngressModel(BaseModel):
         description='Ports is a list of records of service ports If used, every port defined in the service should have an entry in it',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LoadBalancerStatusModel(BaseModel):
     ingress: Optional[List[LoadBalancerIngressModel]] = Field(
         None,
         description='Ingress is a list containing ingress points for the load-balancer. Traffic intended for the service should be sent to these ingress points.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NamespaceCondition(BaseModel):
@@ -4043,6 +4895,10 @@ class NamespaceCondition(BaseModel):
     )
     type: str = Field(..., description='Type of namespace controller condition.')
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NamespaceStatus(BaseModel):
     conditions: Optional[List[NamespaceCondition]] = Field(
@@ -4053,6 +4909,10 @@ class NamespaceStatus(BaseModel):
         None,
         description='Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/\n\n',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NodeCondition(BaseModel):
@@ -4073,6 +4933,10 @@ class NodeCondition(BaseModel):
         ..., description='Status of the condition, one of True, False, Unknown.'
     )
     type: str = Field(..., description='Type of node condition.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NodeSelectorModel1(BaseModel):
@@ -4123,6 +4987,10 @@ class NodeStatus(BaseModel):
         None, description='List of attachable volumes in use (mounted) by the node.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PersistentVolumeClaimConditionModel(BaseModel):
     lastProbeTime: Optional[v1.TimeModel18] = Field(
@@ -4142,6 +5010,10 @@ class PersistentVolumeClaimConditionModel(BaseModel):
     )
     status: str
     type: str
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PersistentVolumeClaimStatusModel(BaseModel):
@@ -4170,6 +5042,10 @@ class PersistentVolumeClaimStatusModel(BaseModel):
         description='resizeStatus stores status of resize operation. ResizeStatus is not set by default but when expansion is complete resizeStatus is set to empty string by resize controller or kubelet. This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodCondition(BaseModel):
     lastProbeTime: Optional[v1.TimeModel18] = Field(
@@ -4196,6 +5072,10 @@ class PodCondition(BaseModel):
         description='Type is the type of the condition. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodDNSConfigModel(BaseModel):
     nameservers: Optional[List[str]] = Field(
@@ -4210,6 +5090,10 @@ class PodDNSConfigModel(BaseModel):
         None,
         description='A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PodSecurityContextModel(BaseModel):
@@ -4254,6 +5138,10 @@ class PodSecurityContextModel(BaseModel):
         description="The Windows specific settings applied to all containers. If unspecified, the options within a container's SecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is linux.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class RBDPersistentVolumeSourceModel(BaseModel):
     fsType: Optional[str] = Field(
@@ -4289,6 +5177,10 @@ class RBDPersistentVolumeSourceModel(BaseModel):
         description='user is the rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ReplicationControllerCondition(BaseModel):
     lastTransitionTime: Optional[v1.TimeModel18] = Field(
@@ -4306,6 +5198,10 @@ class ReplicationControllerCondition(BaseModel):
         ..., description='Status of the condition, one of True, False, Unknown.'
     )
     type: str = Field(..., description='Type of replication controller condition.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ReplicationControllerStatus(BaseModel):
@@ -4334,6 +5230,10 @@ class ReplicationControllerStatus(BaseModel):
         description='Replicas is the most recently oberved number of replicas. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#what-is-a-replicationcontroller',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ResourceFieldSelectorModel(BaseModel):
     containerName: Optional[str] = Field(
@@ -4344,6 +5244,10 @@ class ResourceFieldSelectorModel(BaseModel):
         description='Specifies the output format of the exposed resources, defaults to "1"',
     )
     resource: str = Field(..., description='Required: resource to select')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ResourceQuotaStatus(BaseModel):
@@ -4356,6 +5260,10 @@ class ResourceQuotaStatus(BaseModel):
         description='Used is the current observed total usage of the resource in the namespace.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ResourceRequirementsModel(BaseModel):
     limits: Optional[Dict[str, resource.QuantityModel5]] = Field(
@@ -4366,6 +5274,10 @@ class ResourceRequirementsModel(BaseModel):
         None,
         description='Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ScaleIOPersistentVolumeSourceModel(BaseModel):
@@ -4409,12 +5321,20 @@ class ScaleIOPersistentVolumeSourceModel(BaseModel):
         description='volumeName is the name of a volume already created in the ScaleIO system that is associated with this volume source.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ScopeSelector(BaseModel):
     matchExpressions: Optional[List[ScopedResourceSelectorRequirement]] = Field(
         None,
         description='A list of scope selector requirements by scope of the resources.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class SecurityContextModel(BaseModel):
@@ -4463,6 +5383,10 @@ class SecurityContextModel(BaseModel):
         description='The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is linux.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ServicePort(BaseModel):
     appProtocol: Optional[str] = Field(
@@ -4486,6 +5410,10 @@ class ServicePort(BaseModel):
         {},
         description="Number or name of the port to access on the pods targeted by the service. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. If this is a string, it will be looked up as a named port in the target Pod's container ports. If this is not specified, the value of the 'port' field is used (an identity map). This field is ignored for services with clusterIP=None, and should be omitted or set equal to the 'port' field. More info: https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ServiceSpec(BaseModel):
@@ -4566,6 +5494,10 @@ class ServiceSpec(BaseModel):
         description='type determines how the Service is exposed. Defaults to ClusterIP. Valid options are ExternalName, ClusterIP, NodePort, and LoadBalancer. "ClusterIP" allocates a cluster-internal IP address for load-balancing to endpoints. Endpoints are determined by the selector or if that is not specified, by manual construction of an Endpoints object or EndpointSlice objects. If clusterIP is "None", no virtual IP is allocated and the endpoints are published as a set of endpoints rather than a virtual IP. "NodePort" builds on ClusterIP and allocates a port on every node which routes to the same endpoints as the clusterIP. "LoadBalancer" builds on NodePort and creates an external load-balancer (if supported in the current cloud) which routes to the same endpoints as the clusterIP. "ExternalName" aliases this service to the specified externalName. Several other fields do not apply to ExternalName services. More info: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types\n\n',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class TCPSocketActionModel(BaseModel):
     host: Optional[str] = Field(
@@ -4575,6 +5507,10 @@ class TCPSocketActionModel(BaseModel):
         ...,
         description='Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Taint(BaseModel):
@@ -4593,11 +5529,19 @@ class Taint(BaseModel):
         None, description='The taint value corresponding to the taint key.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class VolumeNodeAffinityModel(BaseModel):
     required: Optional[NodeSelectorModel1] = Field(
         None, description='required specifies hard node constraints that must be met.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class CSIVolumeSourceModel1(BaseModel):
@@ -4621,6 +5565,10 @@ class CSIVolumeSourceModel1(BaseModel):
         None,
         description="volumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values.",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class CephFSVolumeSourceModel1(BaseModel):
@@ -4649,6 +5597,10 @@ class CephFSVolumeSourceModel1(BaseModel):
         description='user is optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CinderVolumeSourceModel1(BaseModel):
     fsType: Optional[str] = Field(
@@ -4668,6 +5620,10 @@ class CinderVolumeSourceModel1(BaseModel):
         description='volumeID used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ConfigMapProjectionModel1(BaseModel):
     items: Optional[List[KeyToPathModel1]] = Field(
@@ -4682,6 +5638,10 @@ class ConfigMapProjectionModel1(BaseModel):
         None,
         description='optional specify whether the ConfigMap or its keys must be defined',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ConfigMapVolumeSourceModel1(BaseModel):
@@ -4702,6 +5662,10 @@ class ConfigMapVolumeSourceModel1(BaseModel):
         description='optional specify whether the ConfigMap or its keys must be defined',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EmptyDirVolumeSourceModel1(BaseModel):
     medium: Optional[str] = Field(
@@ -4712,6 +5676,10 @@ class EmptyDirVolumeSourceModel1(BaseModel):
         None,
         description='sizeLimit is the total amount of local storage required for this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class EnvFromSourceModel1(BaseModel):
@@ -4725,6 +5693,10 @@ class EnvFromSourceModel1(BaseModel):
     secretRef: Optional[SecretEnvSourceModel1] = Field(
         None, description='The Secret to select from'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FlexVolumeSourceModel1(BaseModel):
@@ -4748,6 +5720,10 @@ class FlexVolumeSourceModel1(BaseModel):
         description='secretRef is Optional: secretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class HTTPGetActionModel1(BaseModel):
     host: Optional[str] = Field(
@@ -4767,6 +5743,10 @@ class HTTPGetActionModel1(BaseModel):
         None,
         description='Scheme to use for connecting to the host. Defaults to HTTP.\n\n',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ISCSIVolumeSourceModel1(BaseModel):
@@ -4809,6 +5789,10 @@ class ISCSIVolumeSourceModel1(BaseModel):
         description='targetPortal is iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NodeSelectorModel2(BaseModel):
     nodeSelectorTerms: List[NodeSelectorTermModel2] = Field(
@@ -4829,6 +5813,10 @@ class PodDNSConfigModel1(BaseModel):
         None,
         description='A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PodSecurityContextModel1(BaseModel):
@@ -4873,6 +5861,10 @@ class PodSecurityContextModel1(BaseModel):
         description="The Windows specific settings applied to all containers. If unspecified, the options within a container's SecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is linux.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ResourceFieldSelectorModel1(BaseModel):
     containerName: Optional[str] = Field(
@@ -4884,6 +5876,10 @@ class ResourceFieldSelectorModel1(BaseModel):
     )
     resource: str = Field(..., description='Required: resource to select')
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ResourceRequirementsModel1(BaseModel):
     limits: Optional[Dict[str, resource.QuantityModel6]] = Field(
@@ -4894,6 +5890,10 @@ class ResourceRequirementsModel1(BaseModel):
         None,
         description='Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class SecurityContextModel1(BaseModel):
@@ -4942,6 +5942,10 @@ class SecurityContextModel1(BaseModel):
         description='The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is linux.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class TCPSocketActionModel1(BaseModel):
     host: Optional[str] = Field(
@@ -4951,6 +5955,10 @@ class TCPSocketActionModel1(BaseModel):
         ...,
         description='Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class DownwardAPIVolumeFile(BaseModel):
@@ -4971,6 +5979,10 @@ class DownwardAPIVolumeFile(BaseModel):
         description='Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DownwardAPIVolumeSource(BaseModel):
     defaultMode: Optional[int] = Field(
@@ -4980,6 +5992,10 @@ class DownwardAPIVolumeSource(BaseModel):
     items: Optional[List[DownwardAPIVolumeFile]] = Field(
         None, description='Items is a list of downward API volume file'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class EnvVarSource(BaseModel):
@@ -4998,6 +6014,10 @@ class EnvVarSource(BaseModel):
         None, description="Selects a key of a secret in the pod's namespace"
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LifecycleHandler(BaseModel):
     exec: Optional[ExecAction] = Field(
@@ -5011,6 +6031,10 @@ class LifecycleHandler(BaseModel):
         description='Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept for the backward compatibility. There are no validation of this field and lifecycle hooks will fail in runtime when tcp handler is specified.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NodeAffinity(BaseModel):
     preferredDuringSchedulingIgnoredDuringExecution: Optional[
@@ -5023,6 +6047,10 @@ class NodeAffinity(BaseModel):
         None,
         description='If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PersistentVolumeClaimSpec(BaseModel):
@@ -5059,6 +6087,10 @@ class PersistentVolumeClaimSpec(BaseModel):
         description='volumeName is the binding reference to the PersistentVolume backing this claim.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PersistentVolumeClaimTemplate(BaseModel):
     metadata: Optional[v1.ObjectMetaModel6] = Field(
@@ -5069,6 +6101,10 @@ class PersistentVolumeClaimTemplate(BaseModel):
         ...,
         description='The specification for the PersistentVolumeClaim. The entire content is copied unchanged into the PVC that gets created from this template. The same fields as in a PersistentVolumeClaim are also valid here.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PodAffinityTerm(BaseModel):
@@ -5087,6 +6123,10 @@ class PodAffinityTerm(BaseModel):
         ...,
         description='This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Probe(BaseModel):
@@ -5128,6 +6168,10 @@ class Probe(BaseModel):
         description='Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class TopologySpreadConstraint(BaseModel):
     labelSelector: Optional[v1.LabelSelectorModel3] = Field(
@@ -5158,6 +6202,10 @@ class TopologySpreadConstraint(BaseModel):
         ...,
         description='WhenUnsatisfiable indicates how to deal with a pod if it doesn\'t satisfy the spread constraint. - DoNotSchedule (default) tells the scheduler not to schedule it. - ScheduleAnyway tells the scheduler to schedule the pod in any location,\n  but giving higher precedence to topologies that would help reduce the\n  skew.\nA constraint is considered "Unsatisfiable" for an incoming pod if and only if every possible node assignment for that pod would violate "MaxSkew" on some topology. For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with the same labelSelector spread as 3/1/1: | zone1 | zone2 | zone3 | | P P P |   P   |   P   | If WhenUnsatisfiable is set to DoNotSchedule, incoming pod can only be scheduled to zone2(zone3) to become 3/2/1(3/1/2) as ActualSkew(2-1) on zone2(zone3) satisfies MaxSkew(1). In other words, the cluster can still be imbalanced, but scheduler won\'t make it *more* imbalanced. It\'s a required field.\n\n',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class WeightedPodAffinityTerm(BaseModel):
@@ -5293,6 +6341,10 @@ class PersistentVolumeSpec(BaseModel):
         description='vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class Binding(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5312,6 +6364,10 @@ class Binding(BaseModel):
         description='The target object that you want to bind to the standard object.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ComponentStatus(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5330,6 +6386,10 @@ class ComponentStatus(BaseModel):
         description="Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ComponentStatusList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5347,6 +6407,10 @@ class ComponentStatusList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ConfigMap(BaseModel):
@@ -5375,6 +6439,10 @@ class ConfigMap(BaseModel):
         description="Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ConfigMapList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5391,6 +6459,10 @@ class ConfigMapList(BaseModel):
         description='More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ContainerState(BaseModel):
     running: Optional[ContainerStateRunning] = Field(
@@ -5402,6 +6474,10 @@ class ContainerState(BaseModel):
     waiting: Optional[ContainerStateWaiting] = Field(
         None, description='Details about a waiting container'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ContainerStatus(BaseModel):
@@ -5435,6 +6511,10 @@ class ContainerStatus(BaseModel):
         {}, description="Details about the container's current condition."
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DownwardAPIVolumeFileModel(BaseModel):
     fieldRef: Optional[ObjectFieldSelectorModel] = Field(
@@ -5454,6 +6534,10 @@ class DownwardAPIVolumeFileModel(BaseModel):
         description='Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DownwardAPIVolumeSourceModel(BaseModel):
     defaultMode: Optional[int] = Field(
@@ -5463,6 +6547,10 @@ class DownwardAPIVolumeSourceModel(BaseModel):
     items: Optional[List[DownwardAPIVolumeFileModel]] = Field(
         None, description='Items is a list of downward API volume file'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Endpoints(BaseModel):
@@ -5483,6 +6571,10 @@ class Endpoints(BaseModel):
         description='The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EndpointsList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5498,6 +6590,10 @@ class EndpointsList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class EnvVarSourceModel(BaseModel):
@@ -5515,6 +6611,10 @@ class EnvVarSourceModel(BaseModel):
     secretKeyRef: Optional[SecretKeySelectorModel] = Field(
         None, description="Selects a key of a secret in the pod's namespace"
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Event(BaseModel):
@@ -5582,6 +6682,10 @@ class Event(BaseModel):
         description='Type of this event (Normal, Warning), new types could be added in the future',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EventList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5598,6 +6702,10 @@ class EventList(BaseModel):
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LifecycleHandlerModel(BaseModel):
     exec: Optional[ExecActionModel] = Field(
@@ -5610,6 +6718,10 @@ class LifecycleHandlerModel(BaseModel):
         None,
         description='Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept for the backward compatibility. There are no validation of this field and lifecycle hooks will fail in runtime when tcp handler is specified.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class LimitRange(BaseModel):
@@ -5630,6 +6742,10 @@ class LimitRange(BaseModel):
         description='Spec defines the limits enforced. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LimitRangeList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5648,6 +6764,10 @@ class LimitRangeList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Namespace(BaseModel):
@@ -5672,6 +6792,10 @@ class Namespace(BaseModel):
         description='Status describes the current status of a Namespace. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NamespaceList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5691,6 +6815,10 @@ class NamespaceList(BaseModel):
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NodeAffinityModel(BaseModel):
     preferredDuringSchedulingIgnoredDuringExecution: Optional[
@@ -5705,6 +6833,10 @@ class NodeAffinityModel(BaseModel):
         None,
         description='If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NodeSpec(BaseModel):
@@ -5734,6 +6866,10 @@ class NodeSpec(BaseModel):
         None,
         description='Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PersistentVolumeClaimSpecModel(BaseModel):
@@ -5770,6 +6906,10 @@ class PersistentVolumeClaimSpecModel(BaseModel):
         description='volumeName is the binding reference to the PersistentVolume backing this claim.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PersistentVolumeClaimTemplateModel(BaseModel):
     metadata: Optional[v1.ObjectMetaModel18] = Field(
@@ -5780,6 +6920,10 @@ class PersistentVolumeClaimTemplateModel(BaseModel):
         ...,
         description='The specification for the PersistentVolumeClaim. The entire content is copied unchanged into the PVC that gets created from this template. The same fields as in a PersistentVolumeClaim are also valid here.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PersistentVolumeSpecModel(BaseModel):
@@ -5904,6 +7048,10 @@ class PersistentVolumeSpecModel(BaseModel):
         description='vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodAffinityTermModel(BaseModel):
     labelSelector: Optional[v1.LabelSelectorModel8] = Field(
@@ -5921,6 +7069,10 @@ class PodAffinityTermModel(BaseModel):
         ...,
         description='This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PodStatus(BaseModel):
@@ -5977,6 +7129,10 @@ class PodStatus(BaseModel):
         description='RFC 3339 date and time at which the object was acknowledged by the Kubelet. This is before the Kubelet pulled the container image(s) for the pod.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ProbeModel(BaseModel):
     exec: Optional[ExecActionModel] = Field(
@@ -6017,6 +7173,10 @@ class ProbeModel(BaseModel):
         description='Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ResourceQuotaSpec(BaseModel):
     hard: Optional[Dict[str, resource.QuantityModel5]] = Field(
@@ -6031,6 +7191,10 @@ class ResourceQuotaSpec(BaseModel):
         None,
         description='A collection of filters that must match each object tracked by a quota. If not specified, the quota matches all objects.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Secret(BaseModel):
@@ -6063,6 +7227,10 @@ class Secret(BaseModel):
         description='Used to facilitate programmatic handling of secret data. More info: https://kubernetes.io/docs/concepts/configuration/secret/#secret-types',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SecretList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6081,6 +7249,10 @@ class SecretList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ServiceAccount(BaseModel):
@@ -6109,6 +7281,10 @@ class ServiceAccount(BaseModel):
         description='Secrets is a list of the secrets in the same namespace that pods running using this ServiceAccount are allowed to use. Pods are only limited to this list if this service account has a "kubernetes.io/enforce-mountable-secrets" annotation set to "true". This field should not be used to find auto-generated service account token secrets for use outside of pods. Instead, tokens can be requested directly using the TokenRequest API, or service account token secrets can be manually created. More info: https://kubernetes.io/docs/concepts/configuration/secret',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ServiceAccountList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6128,6 +7304,10 @@ class ServiceAccountList(BaseModel):
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ServiceStatus(BaseModel):
     conditions: Optional[List[v1.ConditionModel1]] = Field(
@@ -6137,6 +7317,10 @@ class ServiceStatus(BaseModel):
         {},
         description='LoadBalancer contains the current status of the load-balancer, if one is present.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TopologySpreadConstraintModel(BaseModel):
@@ -6169,6 +7353,10 @@ class TopologySpreadConstraintModel(BaseModel):
         description='WhenUnsatisfiable indicates how to deal with a pod if it doesn\'t satisfy the spread constraint. - DoNotSchedule (default) tells the scheduler not to schedule it. - ScheduleAnyway tells the scheduler to schedule the pod in any location,\n  but giving higher precedence to topologies that would help reduce the\n  skew.\nA constraint is considered "Unsatisfiable" for an incoming pod if and only if every possible node assignment for that pod would violate "MaxSkew" on some topology. For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with the same labelSelector spread as 3/1/1: | zone1 | zone2 | zone3 | | P P P |   P   |   P   | If WhenUnsatisfiable is set to DoNotSchedule, incoming pod can only be scheduled to zone2(zone3) to become 3/2/1(3/1/2) as ActualSkew(2-1) on zone2(zone3) satisfies MaxSkew(1). In other words, the cluster can still be imbalanced, but scheduler won\'t make it *more* imbalanced. It\'s a required field.\n\n',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class WeightedPodAffinityTermModel(BaseModel):
     podAffinityTerm: PodAffinityTermModel = Field(
@@ -6199,6 +7387,10 @@ class DownwardAPIVolumeFileModel1(BaseModel):
         description='Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DownwardAPIVolumeSourceModel1(BaseModel):
     defaultMode: Optional[int] = Field(
@@ -6208,6 +7400,10 @@ class DownwardAPIVolumeSourceModel1(BaseModel):
     items: Optional[List[DownwardAPIVolumeFileModel1]] = Field(
         None, description='Items is a list of downward API volume file'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class EnvVarSourceModel1(BaseModel):
@@ -6226,6 +7422,10 @@ class EnvVarSourceModel1(BaseModel):
         None, description="Selects a key of a secret in the pod's namespace"
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LifecycleHandlerModel1(BaseModel):
     exec: Optional[ExecActionModel1] = Field(
@@ -6238,6 +7438,10 @@ class LifecycleHandlerModel1(BaseModel):
         None,
         description='Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept for the backward compatibility. There are no validation of this field and lifecycle hooks will fail in runtime when tcp handler is specified.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NodeAffinityModel1(BaseModel):
@@ -6253,6 +7457,10 @@ class NodeAffinityModel1(BaseModel):
         None,
         description='If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PersistentVolumeClaimSpecModel1(BaseModel):
@@ -6289,6 +7497,10 @@ class PersistentVolumeClaimSpecModel1(BaseModel):
         description='volumeName is the binding reference to the PersistentVolume backing this claim.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PersistentVolumeClaimTemplateModel1(BaseModel):
     metadata: Optional[v1.ObjectMetaModel21] = Field(
@@ -6299,6 +7511,10 @@ class PersistentVolumeClaimTemplateModel1(BaseModel):
         ...,
         description='The specification for the PersistentVolumeClaim. The entire content is copied unchanged into the PVC that gets created from this template. The same fields as in a PersistentVolumeClaim are also valid here.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PodAffinityTermModel1(BaseModel):
@@ -6317,6 +7533,10 @@ class PodAffinityTermModel1(BaseModel):
         ...,
         description='This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ProbeModel1(BaseModel):
@@ -6358,6 +7578,10 @@ class ProbeModel1(BaseModel):
         description='Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class TopologySpreadConstraintModel1(BaseModel):
     labelSelector: Optional[v1.LabelSelectorModel9] = Field(
@@ -6389,6 +7613,10 @@ class TopologySpreadConstraintModel1(BaseModel):
         description='WhenUnsatisfiable indicates how to deal with a pod if it doesn\'t satisfy the spread constraint. - DoNotSchedule (default) tells the scheduler not to schedule it. - ScheduleAnyway tells the scheduler to schedule the pod in any location,\n  but giving higher precedence to topologies that would help reduce the\n  skew.\nA constraint is considered "Unsatisfiable" for an incoming pod if and only if every possible node assignment for that pod would violate "MaxSkew" on some topology. For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with the same labelSelector spread as 3/1/1: | zone1 | zone2 | zone3 | | P P P |   P   |   P   | If WhenUnsatisfiable is set to DoNotSchedule, incoming pod can only be scheduled to zone2(zone3) to become 3/2/1(3/1/2) as ActualSkew(2-1) on zone2(zone3) satisfies MaxSkew(1). In other words, the cluster can still be imbalanced, but scheduler won\'t make it *more* imbalanced. It\'s a required field.\n\n',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class WeightedPodAffinityTermModel1(BaseModel):
     podAffinityTerm: PodAffinityTermModel1 = Field(
@@ -6406,6 +7634,10 @@ class DownwardAPIProjection(BaseModel):
         None, description='Items is a list of DownwardAPIVolume file'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EnvVar(BaseModel):
     name: str = Field(
@@ -6420,12 +7652,20 @@ class EnvVar(BaseModel):
         description="Source for the environment variable's value. Cannot be used if value is not empty.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EphemeralVolumeSource(BaseModel):
     volumeClaimTemplate: Optional[PersistentVolumeClaimTemplate] = Field(
         None,
         description='Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC, i.e. the PVC will be deleted together with the pod.  The name of the PVC will be `<pod name>-<volume name>` where `<volume name>` is the name from the `PodSpec.Volumes` array entry. Pod validation will reject the pod if the concatenated name is not valid for a PVC (for example, too long).\n\nAn existing PVC with that name that is not owned by the pod will *not* be used for the pod to avoid using an unrelated volume by mistake. Starting the pod is then blocked until the unrelated PVC is removed. If such a pre-created PVC is meant to be used by the pod, the PVC has to updated with an owner reference to the pod once the pod exists. Normally this should not be necessary, but it may be useful when manually reconstructing a broken cluster.\n\nThis field is read-only and no changes will be made by Kubernetes to the PVC after it has been created.\n\nRequired, must not be nil.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Lifecycle(BaseModel):
@@ -6437,6 +7677,10 @@ class Lifecycle(BaseModel):
         None,
         description="PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The Pod's termination grace period countdown begins before the PreStop hook is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period (unless delayed by finalizers). Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PersistentVolumeClaim(BaseModel):
@@ -6461,6 +7705,10 @@ class PersistentVolumeClaim(BaseModel):
         description='status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodAffinity(BaseModel):
     preferredDuringSchedulingIgnoredDuringExecution: Optional[
@@ -6476,6 +7724,10 @@ class PodAffinity(BaseModel):
         description='If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodAntiAffinity(BaseModel):
     preferredDuringSchedulingIgnoredDuringExecution: Optional[
@@ -6490,6 +7742,10 @@ class PodAntiAffinity(BaseModel):
         None,
         description='If the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class VolumeProjection(BaseModel):
@@ -6508,11 +7764,19 @@ class VolumeProjection(BaseModel):
         description='serviceAccountToken is information about the serviceAccountToken data to project',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DownwardAPIProjectionModel(BaseModel):
     items: Optional[List[DownwardAPIVolumeFileModel]] = Field(
         None, description='Items is a list of DownwardAPIVolume file'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class EnvVarModel(BaseModel):
@@ -6528,12 +7792,20 @@ class EnvVarModel(BaseModel):
         description="Source for the environment variable's value. Cannot be used if value is not empty.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EphemeralVolumeSourceModel(BaseModel):
     volumeClaimTemplate: Optional[PersistentVolumeClaimTemplateModel] = Field(
         None,
         description='Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC, i.e. the PVC will be deleted together with the pod.  The name of the PVC will be `<pod name>-<volume name>` where `<volume name>` is the name from the `PodSpec.Volumes` array entry. Pod validation will reject the pod if the concatenated name is not valid for a PVC (for example, too long).\n\nAn existing PVC with that name that is not owned by the pod will *not* be used for the pod to avoid using an unrelated volume by mistake. Starting the pod is then blocked until the unrelated PVC is removed. If such a pre-created PVC is meant to be used by the pod, the PVC has to updated with an owner reference to the pod once the pod exists. Normally this should not be necessary, but it may be useful when manually reconstructing a broken cluster.\n\nThis field is read-only and no changes will be made by Kubernetes to the PVC after it has been created.\n\nRequired, must not be nil.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class LifecycleModel(BaseModel):
@@ -6545,6 +7817,10 @@ class LifecycleModel(BaseModel):
         None,
         description="PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The Pod's termination grace period countdown begins before the PreStop hook is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period (unless delayed by finalizers). Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Node(BaseModel):
@@ -6569,6 +7845,10 @@ class Node(BaseModel):
         description='Most recently observed status of the node. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NodeList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6584,6 +7864,10 @@ class NodeList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PersistentVolume(BaseModel):
@@ -6608,6 +7892,10 @@ class PersistentVolume(BaseModel):
         description='status represents the current information/status for the persistent volume. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PersistentVolumeClaimModel(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6631,6 +7919,10 @@ class PersistentVolumeClaimModel(BaseModel):
         description='status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PersistentVolumeClaimList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6649,6 +7941,10 @@ class PersistentVolumeClaimList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PersistentVolumeList(BaseModel):
@@ -6669,6 +7965,10 @@ class PersistentVolumeList(BaseModel):
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodAffinityModel(BaseModel):
     preferredDuringSchedulingIgnoredDuringExecution: Optional[
@@ -6684,6 +7984,10 @@ class PodAffinityModel(BaseModel):
         description='If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodAntiAffinityModel(BaseModel):
     preferredDuringSchedulingIgnoredDuringExecution: Optional[
@@ -6698,6 +8002,10 @@ class PodAntiAffinityModel(BaseModel):
         None,
         description='If the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ResourceQuota(BaseModel):
@@ -6722,6 +8030,10 @@ class ResourceQuota(BaseModel):
         description='Status defines the actual enforced quota and its current usage. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ResourceQuotaList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6740,6 +8052,10 @@ class ResourceQuotaList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Service(BaseModel):
@@ -6764,6 +8080,10 @@ class Service(BaseModel):
         description='Most recently observed status of the service. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ServiceList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6779,6 +8099,10 @@ class ServiceList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class VolumeProjectionModel(BaseModel):
@@ -6797,11 +8121,19 @@ class VolumeProjectionModel(BaseModel):
         description='serviceAccountToken is information about the serviceAccountToken data to project',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DownwardAPIProjectionModel1(BaseModel):
     items: Optional[List[DownwardAPIVolumeFileModel1]] = Field(
         None, description='Items is a list of DownwardAPIVolume file'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class EnvVarModel1(BaseModel):
@@ -6817,12 +8149,20 @@ class EnvVarModel1(BaseModel):
         description="Source for the environment variable's value. Cannot be used if value is not empty.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EphemeralVolumeSourceModel1(BaseModel):
     volumeClaimTemplate: Optional[PersistentVolumeClaimTemplateModel1] = Field(
         None,
         description='Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC, i.e. the PVC will be deleted together with the pod.  The name of the PVC will be `<pod name>-<volume name>` where `<volume name>` is the name from the `PodSpec.Volumes` array entry. Pod validation will reject the pod if the concatenated name is not valid for a PVC (for example, too long).\n\nAn existing PVC with that name that is not owned by the pod will *not* be used for the pod to avoid using an unrelated volume by mistake. Starting the pod is then blocked until the unrelated PVC is removed. If such a pre-created PVC is meant to be used by the pod, the PVC has to updated with an owner reference to the pod once the pod exists. Normally this should not be necessary, but it may be useful when manually reconstructing a broken cluster.\n\nThis field is read-only and no changes will be made by Kubernetes to the PVC after it has been created.\n\nRequired, must not be nil.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class LifecycleModel1(BaseModel):
@@ -6834,6 +8174,10 @@ class LifecycleModel1(BaseModel):
         None,
         description="PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The Pod's termination grace period countdown begins before the PreStop hook is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period (unless delayed by finalizers). Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PodAffinityModel1(BaseModel):
@@ -6850,6 +8194,10 @@ class PodAffinityModel1(BaseModel):
         description='If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodAntiAffinityModel1(BaseModel):
     preferredDuringSchedulingIgnoredDuringExecution: Optional[
@@ -6864,6 +8212,10 @@ class PodAntiAffinityModel1(BaseModel):
         None,
         description='If the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class VolumeProjectionModel1(BaseModel):
@@ -6882,6 +8234,10 @@ class VolumeProjectionModel1(BaseModel):
         description='serviceAccountToken is information about the serviceAccountToken data to project',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class Affinity(BaseModel):
     nodeAffinity: Optional[NodeAffinity] = Field(
@@ -6895,6 +8251,10 @@ class Affinity(BaseModel):
         None,
         description='Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Container(BaseModel):
@@ -6987,6 +8347,10 @@ class Container(BaseModel):
         description="Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EphemeralContainer(BaseModel):
     args: Optional[List[str]] = Field(
@@ -7077,6 +8441,10 @@ class EphemeralContainer(BaseModel):
         description="Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ProjectedVolumeSource(BaseModel):
     defaultMode: Optional[int] = Field(
@@ -7086,6 +8454,10 @@ class ProjectedVolumeSource(BaseModel):
     sources: Optional[List[VolumeProjection]] = Field(
         None, description='sources is the list of volume projections'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Volume(BaseModel):
@@ -7210,6 +8582,10 @@ class Volume(BaseModel):
         description='vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class AffinityModel(BaseModel):
     nodeAffinity: Optional[NodeAffinityModel] = Field(
@@ -7223,6 +8599,10 @@ class AffinityModel(BaseModel):
         None,
         description='Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ContainerModel(BaseModel):
@@ -7315,6 +8695,10 @@ class ContainerModel(BaseModel):
         description="Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EphemeralContainerModel(BaseModel):
     args: Optional[List[str]] = Field(
@@ -7405,6 +8789,10 @@ class EphemeralContainerModel(BaseModel):
         description="Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ProjectedVolumeSourceModel(BaseModel):
     defaultMode: Optional[int] = Field(
@@ -7414,6 +8802,10 @@ class ProjectedVolumeSourceModel(BaseModel):
     sources: Optional[List[VolumeProjectionModel]] = Field(
         None, description='sources is the list of volume projections'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class VolumeModel(BaseModel):
@@ -7538,6 +8930,10 @@ class VolumeModel(BaseModel):
         description='vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class AffinityModel1(BaseModel):
     nodeAffinity: Optional[NodeAffinityModel1] = Field(
@@ -7551,6 +8947,10 @@ class AffinityModel1(BaseModel):
         None,
         description='Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ContainerModel1(BaseModel):
@@ -7643,6 +9043,10 @@ class ContainerModel1(BaseModel):
         description="Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EphemeralContainerModel1(BaseModel):
     args: Optional[List[str]] = Field(
@@ -7733,6 +9137,10 @@ class EphemeralContainerModel1(BaseModel):
         description="Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ProjectedVolumeSourceModel1(BaseModel):
     defaultMode: Optional[int] = Field(
@@ -7742,6 +9150,10 @@ class ProjectedVolumeSourceModel1(BaseModel):
     sources: Optional[List[VolumeProjectionModel1]] = Field(
         None, description='sources is the list of volume projections'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class VolumeModel1(BaseModel):
@@ -7865,6 +9277,10 @@ class VolumeModel1(BaseModel):
         None,
         description='vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PodSpec(BaseModel):
@@ -8009,6 +9425,10 @@ class PodSpec(BaseModel):
         description='List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodTemplateSpec(BaseModel):
     metadata: Optional[v1.ObjectMetaModel6] = Field(
@@ -8019,6 +9439,10 @@ class PodTemplateSpec(BaseModel):
         {},
         description='Specification of the desired behavior of the pod. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PodSpecModel(BaseModel):
@@ -8163,6 +9587,10 @@ class PodSpecModel(BaseModel):
         description='List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodTemplateSpecModel(BaseModel):
     metadata: Optional[v1.ObjectMetaModel18] = Field(
@@ -8173,6 +9601,10 @@ class PodTemplateSpecModel(BaseModel):
         {},
         description='Specification of the desired behavior of the pod. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ReplicationControllerSpec(BaseModel):
@@ -8192,6 +9624,10 @@ class ReplicationControllerSpec(BaseModel):
         None,
         description='Template is the object that describes the pod that will be created if insufficient replicas are detected. This takes precedence over a TemplateRef. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PodSpecModel1(BaseModel):
@@ -8336,6 +9772,10 @@ class PodSpecModel1(BaseModel):
         description='List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodTemplateSpecModel1(BaseModel):
     metadata: Optional[v1.ObjectMetaModel21] = Field(
@@ -8346,6 +9786,10 @@ class PodTemplateSpecModel1(BaseModel):
         {},
         description='Specification of the desired behavior of the pod. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Pod(BaseModel):
@@ -8370,6 +9814,10 @@ class Pod(BaseModel):
         description='Most recently observed status of the pod. This data may not be up to date. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -8388,6 +9836,10 @@ class PodList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PodTemplate(BaseModel):
@@ -8408,6 +9860,10 @@ class PodTemplate(BaseModel):
         description='Template defines the pods that will be created from this pod template. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodTemplateList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -8423,6 +9879,10 @@ class PodTemplateList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ReplicationController(BaseModel):
@@ -8447,6 +9907,10 @@ class ReplicationController(BaseModel):
         description='Status is the most recently observed status of the replication controller. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ReplicationControllerList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -8465,3 +9929,7 @@ class ReplicationControllerList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

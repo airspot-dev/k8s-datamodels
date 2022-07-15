@@ -20,6 +20,10 @@ class UncountedTerminatedPods(BaseModel):
         None, description='Succeeded holds UIDs of succeeded Pods.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CronJobStatus(BaseModel):
     active: Optional[List[v1.ObjectReferenceModel3]] = Field(
@@ -33,6 +37,10 @@ class CronJobStatus(BaseModel):
         None,
         description='Information when was the last time the job successfully completed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class JobCondition(BaseModel):
@@ -53,6 +61,10 @@ class JobCondition(BaseModel):
         ..., description='Status of the condition, one of True, False, Unknown.'
     )
     type: str = Field(..., description='Type of job condition, Complete or Failed.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class JobStatus(BaseModel):
@@ -89,6 +101,10 @@ class JobStatus(BaseModel):
         None,
         description="UncountedTerminatedPods holds the UIDs of Pods that have terminated but the job controller hasn't yet accounted for in the status counters.\n\nThe job controller creates pods with a finalizer. When a pod terminates (succeeded or failed), the controller does three steps to account for it in the job status: (1) Add the pod UID to the arrays in this field. (2) Remove the pod finalizer. (3) Remove the pod UID from the arrays while increasing the corresponding\n    counter.\n\nThis field is beta-level. The job controller only makes use of this field when the feature gate JobTrackingWithFinalizers is enabled (enabled by default). Old jobs might not be tracked using this field, in which case the field remains null.",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class JobSpec(BaseModel):
@@ -133,6 +149,10 @@ class JobSpec(BaseModel):
         description="ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is unset, the Job won't be automatically deleted. If this field is set to zero, the Job becomes eligible to be deleted immediately after it finishes.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class JobTemplateSpec(BaseModel):
     metadata: Optional[v1_1.ObjectMetaModel21] = Field(
@@ -143,6 +163,10 @@ class JobTemplateSpec(BaseModel):
         {},
         description='Specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class CronJobSpec(BaseModel):
@@ -179,6 +203,10 @@ class CronJobSpec(BaseModel):
         description='The time zone for the given schedule, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones. If not specified, this will rely on the time zone of the kube-controller-manager process. ALPHA: This field is in alpha and must be enabled via the `CronJobTimeZone` feature gate.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class Job(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -202,6 +230,10 @@ class Job(BaseModel):
         description='Current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class JobList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -217,6 +249,10 @@ class JobList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class CronJob(BaseModel):
@@ -241,6 +277,10 @@ class CronJob(BaseModel):
         description='Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CronJobList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -256,3 +296,7 @@ class CronJobList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

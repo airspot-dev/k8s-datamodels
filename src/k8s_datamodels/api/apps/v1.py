@@ -24,6 +24,10 @@ class StatefulSetPersistentVolumeClaimRetentionPolicy(BaseModel):
         description='WhenScaled specifies what happens to PVCs created from StatefulSet VolumeClaimTemplates when the StatefulSet is scaled down. The default policy of `Retain` causes PVCs to not be affected by a scaledown. The `Delete` policy causes the associated PVCs for any excess pods above the replica count to be deleted.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DaemonSetCondition(BaseModel):
     lastTransitionTime: Optional[v1.TimeModel6] = Field(
@@ -41,6 +45,10 @@ class DaemonSetCondition(BaseModel):
         ..., description='Status of the condition, one of True, False, Unknown.'
     )
     type: str = Field(..., description='Type of DaemonSet condition.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class DaemonSetStatus(BaseModel):
@@ -85,6 +93,10 @@ class DaemonSetStatus(BaseModel):
         description='The total number of nodes that are running updated daemon pod',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DeploymentCondition(BaseModel):
     lastTransitionTime: Optional[v1.TimeModel6] = Field(
@@ -105,6 +117,10 @@ class DeploymentCondition(BaseModel):
         ..., description='Status of the condition, one of True, False, Unknown.'
     )
     type: str = Field(..., description='Type of deployment condition.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class DeploymentStatus(BaseModel):
@@ -140,6 +156,10 @@ class DeploymentStatus(BaseModel):
         description='Total number of non-terminated pods targeted by this deployment that have the desired template spec.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ReplicaSetCondition(BaseModel):
     lastTransitionTime: Optional[v1.TimeModel6] = Field(
@@ -157,6 +177,10 @@ class ReplicaSetCondition(BaseModel):
         ..., description='Status of the condition, one of True, False, Unknown.'
     )
     type: str = Field(..., description='Type of replica set condition.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ReplicaSetStatus(BaseModel):
@@ -185,6 +209,10 @@ class ReplicaSetStatus(BaseModel):
         description='Replicas is the most recently oberved number of replicas. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class RollingUpdateDaemonSet(BaseModel):
     maxSurge: Optional[intstr.IntOrStringModel] = Field(
@@ -195,6 +223,10 @@ class RollingUpdateDaemonSet(BaseModel):
         None,
         description='The maximum number of DaemonSet pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of total number of DaemonSet pods at the start of the update (ex: 10%). Absolute number is calculated from percentage by rounding up. This cannot be 0 if MaxSurge is 0 Default value is 1. Example: when this is set to 30%, at most 30% of the total number of nodes that should be running the daemon pod (i.e. status.desiredNumberScheduled) can have their pods stopped for an update at any given time. The update starts by stopping at most 30% of those DaemonSet pods and then brings up new DaemonSet pods in their place. Once the new pods are available, it then proceeds onto other DaemonSet pods, thus ensuring that at least 70% of original number of DaemonSet pods are available at all times during the update.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class RollingUpdateDeployment(BaseModel):
@@ -207,6 +239,10 @@ class RollingUpdateDeployment(BaseModel):
         description='The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old ReplicaSet can be scaled down further, followed by scaling up the new ReplicaSet, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class RollingUpdateStatefulSetStrategy(BaseModel):
     maxUnavailable: Optional[intstr.IntOrStringModel] = Field(
@@ -217,6 +253,10 @@ class RollingUpdateStatefulSetStrategy(BaseModel):
         None,
         description='Partition indicates the ordinal at which the StatefulSet should be partitioned for updates. During a rolling update, all pods from ordinal Replicas-1 to Partition are updated. All pods from ordinal Partition-1 to 0 remain untouched. This is helpful in being able to do a canary based deployment. The default value is 0.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatefulSetCondition(BaseModel):
@@ -235,6 +275,10 @@ class StatefulSetCondition(BaseModel):
         ..., description='Status of the condition, one of True, False, Unknown.'
     )
     type: str = Field(..., description='Type of statefulset condition.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatefulSetStatus(BaseModel):
@@ -279,6 +323,10 @@ class StatefulSetStatus(BaseModel):
         description='updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatefulSetUpdateStrategy(BaseModel):
     rollingUpdate: Optional[RollingUpdateStatefulSetStrategy] = Field(
@@ -289,6 +337,10 @@ class StatefulSetUpdateStrategy(BaseModel):
         None,
         description='Type indicates the type of the StatefulSetUpdateStrategy. Default is RollingUpdate.\n\n',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ControllerRevision(BaseModel):
@@ -312,6 +364,10 @@ class ControllerRevision(BaseModel):
         description='Revision indicates the revision of the state represented by Data.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ControllerRevisionList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -330,6 +386,10 @@ class ControllerRevisionList(BaseModel):
         description='More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DaemonSetUpdateStrategy(BaseModel):
     rollingUpdate: Optional[RollingUpdateDaemonSet] = Field(
@@ -341,6 +401,10 @@ class DaemonSetUpdateStrategy(BaseModel):
         description='Type of daemon set update. Can be "RollingUpdate" or "OnDelete". Default is RollingUpdate.\n\n',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DeploymentStrategy(BaseModel):
     rollingUpdate: Optional[RollingUpdateDeployment] = Field(
@@ -351,6 +415,10 @@ class DeploymentStrategy(BaseModel):
         None,
         description='Type of deployment. Can be "Recreate" or "RollingUpdate". Default is RollingUpdate.\n\n',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class DaemonSetSpec(BaseModel):
@@ -374,6 +442,10 @@ class DaemonSetSpec(BaseModel):
         {},
         description='An update strategy to replace existing DaemonSet pods with new pods.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class DeploymentSpec(BaseModel):
@@ -408,6 +480,10 @@ class DeploymentSpec(BaseModel):
         ..., description='Template describes the pods that will be created.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ReplicaSetSpec(BaseModel):
     minReadySeconds: Optional[int] = Field(
@@ -426,6 +502,10 @@ class ReplicaSetSpec(BaseModel):
         {},
         description='Template is the object that describes the pod that will be created if insufficient replicas are detected. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatefulSetSpec(BaseModel):
@@ -472,6 +552,10 @@ class StatefulSetSpec(BaseModel):
         description='volumeClaimTemplates is a list of claims that pods are allowed to reference. The StatefulSet controller is responsible for mapping network identities to claims in a way that maintains the identity of a pod. Every claim in this list must have at least one matching (by name) volumeMount in one container in the template. A claim in this list takes precedence over any volumes in the template, with the same name.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DaemonSet(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -495,6 +579,10 @@ class DaemonSet(BaseModel):
         description='The current status of this daemon set. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DaemonSetList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -510,6 +598,10 @@ class DaemonSetList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Deployment(BaseModel):
@@ -532,6 +624,10 @@ class Deployment(BaseModel):
         {}, description='Most recently observed status of the Deployment.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DeploymentList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -548,6 +644,10 @@ class DeploymentList(BaseModel):
     metadata: Optional[v1.ListMetaModel6] = Field(
         {}, description='Standard list metadata.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ReplicaSet(BaseModel):
@@ -572,6 +672,10 @@ class ReplicaSet(BaseModel):
         description='Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ReplicaSetList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -590,6 +694,10 @@ class ReplicaSetList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatefulSet(BaseModel):
@@ -613,6 +721,10 @@ class StatefulSet(BaseModel):
         description='Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatefulSetList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -630,3 +742,7 @@ class StatefulSetList(BaseModel):
         {},
         description="Standard list's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

@@ -15,6 +15,10 @@ class NonResourceAttributes(BaseModel):
     path: Optional[str] = Field(None, description='Path is the URL path of the request')
     verb: Optional[str] = Field(None, description='Verb is the standard HTTP verb')
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NonResourceRule(BaseModel):
     nonResourceURLs: Optional[List[str]] = Field(
@@ -25,6 +29,10 @@ class NonResourceRule(BaseModel):
         ...,
         description='Verb is a list of kubernetes non-resource API verbs, like: get, post, put, delete, patch, head, options.  "*" means all.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ResourceAttributes(BaseModel):
@@ -55,6 +63,10 @@ class ResourceAttributes(BaseModel):
         None, description='Version is the API Version of the Resource.  "*" means all.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ResourceRule(BaseModel):
     apiGroups: Optional[List[str]] = Field(
@@ -74,6 +86,10 @@ class ResourceRule(BaseModel):
         description='Verb is a list of kubernetes resource API verbs, like: get, list, watch, create, update, delete, proxy.  "*" means all.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SelfSubjectAccessReviewSpec(BaseModel):
     nonResourceAttributes: Optional[NonResourceAttributes] = Field(
@@ -85,11 +101,19 @@ class SelfSubjectAccessReviewSpec(BaseModel):
         description='ResourceAuthorizationAttributes describes information for a resource access request',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SelfSubjectRulesReviewSpec(BaseModel):
     namespace: Optional[str] = Field(
         None, description='Namespace to evaluate rules for. Required.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class SubjectAccessReviewSpec(BaseModel):
@@ -116,6 +140,10 @@ class SubjectAccessReviewSpec(BaseModel):
         description='User is the user you\'re testing for. If you specify "User" but not "Groups", then is it interpreted as "What if User were not a member of any groups',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SubjectAccessReviewStatus(BaseModel):
     allowed: bool = Field(
@@ -135,6 +163,10 @@ class SubjectAccessReviewStatus(BaseModel):
         description='Reason is optional.  It indicates why a request was allowed or denied.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SubjectRulesReviewStatus(BaseModel):
     evaluationError: Optional[str] = Field(
@@ -153,6 +185,10 @@ class SubjectRulesReviewStatus(BaseModel):
         ...,
         description="ResourceRules is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class LocalSubjectAccessReview(BaseModel):
@@ -177,6 +213,10 @@ class LocalSubjectAccessReview(BaseModel):
         description='Status is filled in by the server and indicates whether the request is allowed or not',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SelfSubjectAccessReview(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -200,6 +240,10 @@ class SelfSubjectAccessReview(BaseModel):
         description='Status is filled in by the server and indicates whether the request is allowed or not',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SelfSubjectRulesReview(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -222,6 +266,10 @@ class SelfSubjectRulesReview(BaseModel):
         description='Status is filled in by the server and indicates the set of actions a user can perform.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class SubjectAccessReview(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -243,3 +291,7 @@ class SubjectAccessReview(BaseModel):
         {},
         description='Status is filled in by the server and indicates whether the request is allowed or not',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

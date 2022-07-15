@@ -24,6 +24,10 @@ class IPBlock(BaseModel):
         description='Except is a slice of CIDRs that should not be included within an IP Block Valid examples are "192.168.1.1/24" or "2001:db9::/64" Except values will be rejected if they are outside the CIDR range',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class IngressClassParametersReference(BaseModel):
     apiGroup: Optional[str] = Field(
@@ -41,6 +45,10 @@ class IngressClassParametersReference(BaseModel):
         description='Scope represents if this refers to a cluster or namespace scoped resource. This may be set to "Cluster" (default) or "Namespace".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class IngressClassSpec(BaseModel):
     controller: Optional[str] = Field(
@@ -51,6 +59,10 @@ class IngressClassSpec(BaseModel):
         None,
         description='Parameters is a link to a custom resource containing additional configuration for the controller. This is optional if the controller does not require extra parameters.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class IngressTLS(BaseModel):
@@ -63,6 +75,10 @@ class IngressTLS(BaseModel):
         description='SecretName is the name of the secret used to terminate TLS traffic on port 443. Field is left optional to allow TLS routing based on SNI hostname alone. If the SNI host in a listener conflicts with the "Host" header field used by an IngressRule, the SNI host is used for termination and value of the Host header is used for routing.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ServiceBackendPort(BaseModel):
     name: Optional[str] = Field(
@@ -73,6 +89,10 @@ class ServiceBackendPort(BaseModel):
         None,
         description='Number is the numerical port number (e.g. 80) on the Service. This is a mutually exclusive setting with "Name".',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class IngressServiceBackend(BaseModel):
@@ -85,11 +105,19 @@ class IngressServiceBackend(BaseModel):
         description='Port of the referenced service. A port name or port number is required for a IngressServiceBackend.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class IngressStatus(BaseModel):
     loadBalancer: Optional[v1.LoadBalancerStatus] = Field(
         {}, description='LoadBalancer contains the current status of the load-balancer.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NetworkPolicyPort(BaseModel):
@@ -106,6 +134,10 @@ class NetworkPolicyPort(BaseModel):
         description='The protocol (TCP, UDP, or SCTP) which traffic must match. If not specified, this field defaults to TCP.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class IngressBackend(BaseModel):
     resource: Optional[v1.TypedLocalObjectReferenceModel] = Field(
@@ -116,6 +148,10 @@ class IngressBackend(BaseModel):
         None,
         description='Service references a Service as a Backend. This is a mutually exclusive setting with "Resource".',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class IngressClass(BaseModel):
@@ -136,6 +172,10 @@ class IngressClass(BaseModel):
         description='Spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class IngressClassList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -153,6 +193,10 @@ class IngressClassList(BaseModel):
         {}, description='Standard list metadata.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NetworkPolicyPeer(BaseModel):
     ipBlock: Optional[IPBlock] = Field(
@@ -168,12 +212,20 @@ class NetworkPolicyPeer(BaseModel):
         description="This is a label selector which selects Pods. This field follows standard label selector semantics; if present but empty, it selects all pods.\n\nIf NamespaceSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects the Pods matching PodSelector in the policy's own Namespace.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NetworkPolicyStatus(BaseModel):
     conditions: Optional[List[v1_1.ConditionModel]] = Field(
         None,
         description='Conditions holds an array of metav1.Condition that describe the state of the NetworkPolicy. Current service state',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class HTTPIngressPath(BaseModel):
@@ -190,6 +242,10 @@ class HTTPIngressPath(BaseModel):
         description="PathType determines the interpretation of the Path matching. PathType can be one of the following values: * Exact: Matches the URL path exactly. * Prefix: Matches based on a URL path prefix split by '/'. Matching is\n  done on a path element by element basis. A path element refers is the\n  list of labels in the path split by the '/' separator. A request is a\n  match for path p if every p is an element-wise prefix of p of the\n  request path. Note that if the last element of the path is a substring\n  of the last element in request path, it is not a match (e.g. /foo/bar\n  matches /foo/bar/baz, but does not match /foo/barbaz).\n* ImplementationSpecific: Interpretation of the Path matching is up to\n  the IngressClass. Implementations can treat this as a separate PathType\n  or treat it identically to Prefix or Exact path types.\nImplementations are required to support all path types.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class HTTPIngressRuleValue(BaseModel):
     paths: List[HTTPIngressPath] = Field(
@@ -203,6 +259,10 @@ class IngressRule(BaseModel):
         description='Host is the fully qualified domain name of a network host, as defined by RFC 3986. Note the following deviations from the "host" part of the URI as defined in RFC 3986: 1. IPs are not allowed. Currently an IngressRuleValue can only apply to\n   the IP in the Spec of the parent Ingress.\n2. The `:` delimiter is not respected because ports are not allowed.\n\t  Currently the port of an Ingress is implicitly :80 for http and\n\t  :443 for https.\nBoth these may change in the future. Incoming requests are matched against the host before the IngressRuleValue. If the host is unspecified, the Ingress routes all traffic based on the specified IngressRuleValue.\n\nHost can be "precise" which is a domain name without the terminating dot of a network host (e.g. "foo.bar.com") or "wildcard", which is a domain name prefixed with a single wildcard label (e.g. "*.foo.com"). The wildcard character \'*\' must appear by itself as the first DNS label and matches only a single label. You cannot have a wildcard label by itself (e.g. Host == "*"). Requests will be matched against the Host field in the following way: 1. If Host is precise, the request matches this rule if the http host header is equal to Host. 2. If Host is a wildcard, then the request matches this rule if the http host header is to equal to the suffix (removing the first label) of the wildcard rule.',
     )
     http: Optional[HTTPIngressRuleValue] = None
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class IngressSpec(BaseModel):
@@ -223,6 +283,10 @@ class IngressSpec(BaseModel):
         description='TLS configuration. Currently the Ingress only supports a single TLS port, 443. If multiple members of this list specify different hosts, they will be multiplexed on the same port according to the hostname specified through the SNI TLS extension, if the ingress controller fulfilling the ingress supports SNI.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NetworkPolicyEgressRule(BaseModel):
     ports: Optional[List[NetworkPolicyPort]] = Field(
@@ -233,6 +297,10 @@ class NetworkPolicyEgressRule(BaseModel):
         None,
         description='List of destinations for outgoing traffic of pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all destinations (traffic not restricted by destination). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the to list.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NetworkPolicyIngressRule(BaseModel):
@@ -245,6 +313,10 @@ class NetworkPolicyIngressRule(BaseModel):
         None,
         description='List of ports which should be made accessible on the pods selected for this rule. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NetworkPolicySpec(BaseModel):
@@ -264,6 +336,10 @@ class NetworkPolicySpec(BaseModel):
         None,
         description='List of rule types that the NetworkPolicy relates to. Valid options are ["Ingress"], ["Egress"], or ["Ingress", "Egress"]. If this field is not specified, it will default based on the existence of Ingress or Egress rules; policies that contain an Egress section are assumed to affect Egress, and all policies (whether or not they contain an Ingress section) are assumed to affect Ingress. If you want to write an egress-only policy, you must explicitly specify policyTypes [ "Egress" ]. Likewise, if you want to write a policy that specifies that no egress is allowed, you must specify a policyTypes value that include "Egress" (since such a policy would not include an Egress section and would otherwise default to just [ "Ingress" ]). This field is beta-level in 1.8',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Ingress(BaseModel):
@@ -288,6 +364,10 @@ class Ingress(BaseModel):
         description='Status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class IngressList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -303,6 +383,10 @@ class IngressList(BaseModel):
         {},
         description="Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class NetworkPolicy(BaseModel):
@@ -326,6 +410,10 @@ class NetworkPolicy(BaseModel):
         description='Status is the current state of the NetworkPolicy. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class NetworkPolicyList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -343,3 +431,7 @@ class NetworkPolicyList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

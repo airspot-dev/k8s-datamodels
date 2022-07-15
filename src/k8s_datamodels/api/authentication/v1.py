@@ -18,6 +18,10 @@ class TokenReviewSpec(BaseModel):
     )
     token: Optional[str] = Field(None, description='Token is the opaque bearer token.')
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class UserInfo(BaseModel):
     extra: Optional[Dict[str, List[str]]] = Field(
@@ -35,6 +39,10 @@ class UserInfo(BaseModel):
         description='The name that uniquely identifies this user among all active users.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class BoundObjectReference(BaseModel):
     apiVersion: Optional[str] = Field(None, description='API version of the referent.')
@@ -43,6 +51,10 @@ class BoundObjectReference(BaseModel):
     )
     name: Optional[str] = Field(None, description='Name of the referent.')
     uid: Optional[str] = Field(None, description='UID of the referent.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TokenRequestSpec(BaseModel):
@@ -58,6 +70,10 @@ class TokenRequestSpec(BaseModel):
         None,
         description="ExpirationSeconds is the requested duration of validity of the request. The token issuer may return a token with a different validity duration so a client needs to check the 'expiration' field in a response.",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TokenReviewStatus(BaseModel):
@@ -75,6 +91,10 @@ class TokenReviewStatus(BaseModel):
     user: Optional[UserInfo] = Field(
         {}, description='User is the UserInfo associated with the provided token.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TokenRequestStatus(BaseModel):
@@ -106,6 +126,10 @@ class TokenReview(BaseModel):
         description='Status is filled in by the server and indicates whether the request can be authenticated.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class TokenRequest(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -127,3 +151,7 @@ class TokenRequest(BaseModel):
         {},
         description='Status is filled in by the server and indicates whether the token can be authenticated.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

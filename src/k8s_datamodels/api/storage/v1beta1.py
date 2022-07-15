@@ -42,6 +42,10 @@ class CSIStorageCapacity(BaseModel):
         description='The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CSIStorageCapacityList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -59,3 +63,7 @@ class CSIStorageCapacityList(BaseModel):
         {},
         description='Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

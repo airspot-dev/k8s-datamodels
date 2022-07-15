@@ -32,6 +32,10 @@ class LeaseSpec(BaseModel):
         description='renewTime is a time when the current holder of a lease has last updated the lease.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class Lease(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -51,6 +55,10 @@ class Lease(BaseModel):
         description='Specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LeaseList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -66,3 +74,7 @@ class LeaseList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

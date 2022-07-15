@@ -23,6 +23,10 @@ class CrossVersionObjectReference(BaseModel):
         description='Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class HPAScalingPolicy(BaseModel):
     periodSeconds: int = Field(
@@ -50,6 +54,10 @@ class HPAScalingRules(BaseModel):
         description='StabilizationWindowSeconds is the number of seconds for which past recommendations should be considered while scaling up or scaling down. StabilizationWindowSeconds must be greater than or equal to zero and less than or equal to 3600 (one hour). If not set, use the default values: - For scale up: 0 (i.e. no stabilization is done). - For scale down: 300 (i.e. the stabilization window is 300 seconds long).',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class HorizontalPodAutoscalerBehavior(BaseModel):
     scaleDown: Optional[HPAScalingRules] = Field(
@@ -60,6 +68,10 @@ class HorizontalPodAutoscalerBehavior(BaseModel):
         None,
         description='scaleUp is scaling policy for scaling Up. If not set, the default value is the higher of:\n  * increase no more than 4 pods per 60 seconds\n  * double the number of pods per 60 seconds\nNo stabilization is used.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class HorizontalPodAutoscalerCondition(BaseModel):
@@ -79,6 +91,10 @@ class HorizontalPodAutoscalerCondition(BaseModel):
     )
     type: str = Field(..., description='type describes the current condition')
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class MetricTarget(BaseModel):
     averageUtilization: Optional[int] = Field(
@@ -97,6 +113,10 @@ class MetricTarget(BaseModel):
         None, description='value is the target value of the metric (as a quantity).'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class MetricValueStatus(BaseModel):
     averageUtilization: Optional[int] = Field(
@@ -110,6 +130,10 @@ class MetricValueStatus(BaseModel):
     value: Optional[resource.Quantity] = Field(
         None, description='value is the current value of the metric (as a quantity).'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ResourceMetricSource(BaseModel):
@@ -154,6 +178,10 @@ class MetricIdentifier(BaseModel):
         None,
         description='selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetricSource(BaseModel):
@@ -238,6 +266,10 @@ class MetricSpec(BaseModel):
         description='type is the type of metric source.  It should be one of "ContainerResource", "External", "Object", "Pods" or "Resource", each mapping to a matching field in the object. Note: "ContainerResource" type is available on when the feature-gate HPAContainerMetrics is enabled',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class MetricStatus(BaseModel):
     containerResource: Optional[ContainerResourceMetricStatus] = Field(
@@ -265,6 +297,10 @@ class MetricStatus(BaseModel):
         description='type is the type of metric source.  It will be one of "ContainerResource", "External", "Object", "Pods" or "Resource", each corresponds to a matching field in the object. Note: "ContainerResource" type is available on when the feature-gate HPAContainerMetrics is enabled',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class HorizontalPodAutoscalerSpec(BaseModel):
     behavior: Optional[HorizontalPodAutoscalerBehavior] = Field(
@@ -287,6 +323,10 @@ class HorizontalPodAutoscalerSpec(BaseModel):
         ...,
         description='scaleTargetRef points to the target resource to scale, and is used to the pods for which metrics should be collected, as well as to actually change the replica count.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class HorizontalPodAutoscalerStatus(BaseModel):
@@ -315,6 +355,10 @@ class HorizontalPodAutoscalerStatus(BaseModel):
         description='observedGeneration is the most recent generation observed by this autoscaler.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class HorizontalPodAutoscaler(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -337,6 +381,10 @@ class HorizontalPodAutoscaler(BaseModel):
         {}, description='status is the current information about the autoscaler.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class HorizontalPodAutoscalerList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -353,3 +401,7 @@ class HorizontalPodAutoscalerList(BaseModel):
     metadata: Optional[v1.ListMetaModel] = Field(
         {}, description='metadata is the standard list metadata.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

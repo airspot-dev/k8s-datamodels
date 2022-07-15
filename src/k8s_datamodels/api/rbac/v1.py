@@ -33,6 +33,10 @@ class PolicyRule(BaseModel):
         description="Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class RoleRef(BaseModel):
     apiGroup: str = Field(
@@ -57,12 +61,20 @@ class Subject(BaseModel):
         description='Namespace of the referenced object.  If the object kind is non-namespace, such as "User" or "Group", and this value is not empty the Authorizer should report an error.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class AggregationRule(BaseModel):
     clusterRoleSelectors: Optional[List[v1.LabelSelectorModel]] = Field(
         None,
         description="ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ClusterRole(BaseModel):
@@ -84,6 +96,10 @@ class ClusterRole(BaseModel):
     rules: Optional[List[PolicyRule]] = Field(
         None, description='Rules holds all the PolicyRules for this ClusterRole'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ClusterRoleBinding(BaseModel):
@@ -107,6 +123,10 @@ class ClusterRoleBinding(BaseModel):
         description='Subjects holds references to the objects the role applies to.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ClusterRoleBindingList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -124,6 +144,10 @@ class ClusterRoleBindingList(BaseModel):
         {}, description="Standard object's metadata."
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ClusterRoleList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -138,6 +162,10 @@ class ClusterRoleList(BaseModel):
     metadata: Optional[v1.ListMetaModel1] = Field(
         {}, description="Standard object's metadata."
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Role(BaseModel):
@@ -155,6 +183,10 @@ class Role(BaseModel):
     rules: Optional[List[PolicyRule]] = Field(
         None, description='Rules holds all the PolicyRules for this Role'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class RoleBinding(BaseModel):
@@ -178,6 +210,10 @@ class RoleBinding(BaseModel):
         description='Subjects holds references to the objects the role applies to.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class RoleBindingList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -193,6 +229,10 @@ class RoleBindingList(BaseModel):
         {}, description="Standard object's metadata."
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class RoleList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -207,3 +247,7 @@ class RoleList(BaseModel):
     metadata: Optional[v1.ListMetaModel1] = Field(
         {}, description="Standard object's metadata."
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

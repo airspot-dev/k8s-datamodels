@@ -16,6 +16,10 @@ class ScaleSpec(BaseModel):
         None, description='desired number of instances for the scaled object.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ScaleStatus(BaseModel):
     replicas: int = Field(
@@ -26,11 +30,19 @@ class ScaleStatus(BaseModel):
         description='label query over pods that should match the replicas count. This is same as the label selector but in the string format to avoid introspection by clients. The string will be in the same format as the query-param syntax. More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ScaleSpecModel(BaseModel):
     replicas: Optional[int] = Field(
         None, description='desired number of instances for the scaled object.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ScaleStatusModel(BaseModel):
@@ -41,6 +53,10 @@ class ScaleStatusModel(BaseModel):
         None,
         description='label query over pods that should match the replicas count. This is same as the label selector but in the string format to avoid introspection by clients. The string will be in the same format as the query-param syntax. More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class CrossVersionObjectReference(BaseModel):
@@ -53,6 +69,10 @@ class CrossVersionObjectReference(BaseModel):
         ...,
         description='Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class HorizontalPodAutoscalerSpec(BaseModel):
@@ -72,6 +92,10 @@ class HorizontalPodAutoscalerSpec(BaseModel):
         None,
         description='target average CPU utilization (represented as a percentage of requested CPU) over all the pods; if not specified the default autoscaling policy will be used.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class HorizontalPodAutoscalerStatus(BaseModel):
@@ -94,6 +118,10 @@ class HorizontalPodAutoscalerStatus(BaseModel):
     observedGeneration: Optional[int] = Field(
         None, description='most recent generation observed by this autoscaler.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Scale(BaseModel):
@@ -118,6 +146,10 @@ class Scale(BaseModel):
         description='current status of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status. Read-only.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ScaleModel(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -141,6 +173,10 @@ class ScaleModel(BaseModel):
         description='current status of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status. Read-only.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class HorizontalPodAutoscaler(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -163,6 +199,10 @@ class HorizontalPodAutoscaler(BaseModel):
         {}, description='current information about the autoscaler.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class HorizontalPodAutoscalerList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -179,3 +219,7 @@ class HorizontalPodAutoscalerList(BaseModel):
     metadata: Optional[v1.ListMetaModel20] = Field(
         {}, description='Standard list metadata.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

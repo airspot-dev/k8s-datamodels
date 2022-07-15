@@ -26,6 +26,10 @@ class PodDisruptionBudgetSpec(BaseModel):
         description='Label query over pods whose evictions are managed by the disruption budget. A null selector will match no pods, while an empty ({}) selector will select all pods within the namespace.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodDisruptionBudgetStatus(BaseModel):
     conditions: Optional[List[v1.Condition]] = Field(
@@ -51,6 +55,10 @@ class PodDisruptionBudgetStatus(BaseModel):
         description="Most recent generation observed when updating this PDB status. DisruptionsAllowed and other status information is valid only if observedGeneration equals to PDB's object generation.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class Eviction(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -67,6 +75,10 @@ class Eviction(BaseModel):
     metadata: Optional[v1.ObjectMetaModel18] = Field(
         {}, description='ObjectMeta describes the pod that is being evicted.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PodDisruptionBudget(BaseModel):
@@ -90,6 +102,10 @@ class PodDisruptionBudget(BaseModel):
         {}, description='Most recently observed status of the PodDisruptionBudget.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PodDisruptionBudgetList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -107,3 +123,7 @@ class PodDisruptionBudgetList(BaseModel):
         {},
         description="Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

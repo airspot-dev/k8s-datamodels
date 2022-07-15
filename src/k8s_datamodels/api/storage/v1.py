@@ -23,12 +23,20 @@ class TokenRequest(BaseModel):
         description='ExpirationSeconds is the duration of validity of the token in "TokenRequestSpec". It has the same default value of "ExpirationSeconds" in "TokenRequestSpec".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class VolumeNodeResources(BaseModel):
     count: Optional[int] = Field(
         None,
         description='Maximum number of unique volumes managed by the CSI driver that can be used on a node. A volume that is both attached and mounted on a node is considered to be used once, not twice. The same rule applies for a unique volume that is shared among multiple pods on the same node. If this field is not specified, then the supported number of volumes on this node is unbounded.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class CSIDriverSpec(BaseModel):
@@ -61,6 +69,10 @@ class CSIDriverSpec(BaseModel):
         description='volumeLifecycleModes defines what kind of volumes this CSI volume driver supports. The default if the list is empty is "Persistent", which is the usage defined by the CSI specification and implemented in Kubernetes via the usual PV/PVC mechanism. The other mode is "Ephemeral". In this mode, volumes are defined inline inside the pod spec with CSIVolumeSource and their lifecycle is tied to the lifecycle of that pod. A driver has to be aware of this because it is only going to get a NodePublishVolume call for such a volume. For more information about implementing this mode, see https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html A driver can support one or more of these modes and more modes may be added in the future. This field is beta.\n\nThis field is immutable.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CSINodeDriver(BaseModel):
     allocatable: Optional[VolumeNodeResources] = Field(
@@ -80,6 +92,10 @@ class CSINodeDriver(BaseModel):
         description='topologyKeys is the list of keys supported by the driver. When a driver is initialized on a cluster, it provides a set of topology keys that it understands (e.g. "company.com/zone", "company.com/region"). When a driver is initialized on a node, it provides the same topology keys along with values. Kubelet will expose these topology keys as labels on its own node object. When Kubernetes does topology aware provisioning, it can use this list to determine which labels it should retrieve from the node object and pass back to the driver. It is possible for different nodes to use different topology keys. This can be empty if driver does not support topology.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CSINodeSpec(BaseModel):
     drivers: List[CSINodeDriver] = Field(
@@ -97,6 +113,10 @@ class VolumeError(BaseModel):
         {}, description='Time the error was encountered.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CSIDriver(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -112,6 +132,10 @@ class CSIDriver(BaseModel):
         description='Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
     spec: CSIDriverSpec = Field(..., description='Specification of the CSI Driver.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class CSIDriverList(BaseModel):
@@ -129,6 +153,10 @@ class CSIDriverList(BaseModel):
         description='Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CSINode(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -143,6 +171,10 @@ class CSINode(BaseModel):
         {}, description='metadata.name must be the Kubernetes node name.'
     )
     spec: CSINodeSpec = Field(..., description='spec is the specification of CSINode')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class CSINodeList(BaseModel):
@@ -159,6 +191,10 @@ class CSINodeList(BaseModel):
         {},
         description='Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class CSIStorageCapacity(BaseModel):
@@ -191,6 +227,10 @@ class CSIStorageCapacity(BaseModel):
         description='The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class CSIStorageCapacityList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -208,6 +248,10 @@ class CSIStorageCapacityList(BaseModel):
         {},
         description='Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StorageClass(BaseModel):
@@ -251,6 +295,10 @@ class StorageClass(BaseModel):
         description='VolumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StorageClassList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -269,6 +317,10 @@ class StorageClassList(BaseModel):
         description='Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class VolumeAttachmentSource(BaseModel):
     inlineVolumeSpec: Optional[v1_1.PersistentVolumeSpec] = Field(
@@ -278,6 +330,10 @@ class VolumeAttachmentSource(BaseModel):
     persistentVolumeName: Optional[str] = Field(
         None, description='Name of the persistent volume to attach.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class VolumeAttachmentSpec(BaseModel):
@@ -311,6 +367,10 @@ class VolumeAttachmentStatus(BaseModel):
         description='The last error encountered during detach operation, if any. This field must only be set by the entity completing the detach operation, i.e. the external-attacher.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class VolumeAttachment(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -334,6 +394,10 @@ class VolumeAttachment(BaseModel):
         description='Status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class VolumeAttachmentList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -351,3 +415,7 @@ class VolumeAttachmentList(BaseModel):
         {},
         description='Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

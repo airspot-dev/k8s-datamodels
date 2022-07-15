@@ -50,6 +50,10 @@ class APIResource(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -68,6 +72,10 @@ class APIResourceList(BaseModel):
         ...,
         description='resources contains the name of the resources and if they are namespaced.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FieldsV1(BaseModel):
@@ -93,6 +101,10 @@ class ListMeta(BaseModel):
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class OwnerReference(BaseModel):
     apiVersion: str = Field(..., description='API version of the referent.')
@@ -116,6 +128,10 @@ class OwnerReference(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class Patch(BaseModel):
     pass
@@ -126,6 +142,10 @@ class Preconditions(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCause(BaseModel):
@@ -141,6 +161,10 @@ class StatusCause(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetails(BaseModel):
@@ -168,6 +192,10 @@ class StatusDetails(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Time(BaseModel):
@@ -237,6 +265,10 @@ class APIResourceModel(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -256,6 +288,10 @@ class APIResourceListModel(BaseModel):
         description='resources contains the name of the resources and if they are namespaced.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FieldsV1Model(BaseModel):
     pass
@@ -273,6 +309,10 @@ class LabelSelectorRequirement(BaseModel):
         None,
         description='values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ListMetaModel(BaseModel):
@@ -293,6 +333,10 @@ class ListMetaModel(BaseModel):
         None,
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class OwnerReferenceModel(BaseModel):
@@ -317,6 +361,10 @@ class OwnerReferenceModel(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel(BaseModel):
     pass
@@ -327,6 +375,10 @@ class PreconditionsModel(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel(BaseModel):
@@ -342,6 +394,10 @@ class StatusCauseModel(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel(BaseModel):
@@ -369,6 +425,10 @@ class StatusDetailsModel(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel(BaseModel):
@@ -416,6 +476,10 @@ class APIResourceModel1(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel1(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -435,6 +499,10 @@ class APIResourceListModel1(BaseModel):
         description='resources contains the name of the resources and if they are namespaced.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FieldsV1Model1(BaseModel):
     pass
@@ -452,6 +520,10 @@ class LabelSelectorRequirementModel(BaseModel):
         None,
         description='values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ListMetaModel1(BaseModel):
@@ -472,6 +544,10 @@ class ListMetaModel1(BaseModel):
         None,
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class OwnerReferenceModel1(BaseModel):
@@ -496,6 +572,10 @@ class OwnerReferenceModel1(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel1(BaseModel):
     pass
@@ -506,6 +586,10 @@ class PreconditionsModel1(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel1(BaseModel):
@@ -521,6 +605,10 @@ class StatusCauseModel1(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel1(BaseModel):
@@ -548,6 +636,10 @@ class StatusDetailsModel1(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel1(BaseModel):
@@ -595,6 +687,10 @@ class APIResourceModel2(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel2(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -614,6 +710,10 @@ class APIResourceListModel2(BaseModel):
         description='resources contains the name of the resources and if they are namespaced.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FieldsV1Model2(BaseModel):
     pass
@@ -631,6 +731,10 @@ class LabelSelectorRequirementModel1(BaseModel):
         None,
         description='values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ListMetaModel2(BaseModel):
@@ -651,6 +755,10 @@ class ListMetaModel2(BaseModel):
         None,
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class OwnerReferenceModel2(BaseModel):
@@ -675,6 +783,10 @@ class OwnerReferenceModel2(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel2(BaseModel):
     pass
@@ -685,6 +797,10 @@ class PreconditionsModel2(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel2(BaseModel):
@@ -700,6 +816,10 @@ class StatusCauseModel2(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel2(BaseModel):
@@ -727,6 +847,10 @@ class StatusDetailsModel2(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel2(BaseModel):
@@ -796,6 +920,10 @@ class APIResourceModel3(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel3(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -815,6 +943,10 @@ class APIResourceListModel3(BaseModel):
         description='resources contains the name of the resources and if they are namespaced.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FieldsV1Model3(BaseModel):
     pass
@@ -832,6 +964,10 @@ class LabelSelectorRequirementModel2(BaseModel):
         None,
         description='values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ListMetaModel3(BaseModel):
@@ -852,6 +988,10 @@ class ListMetaModel3(BaseModel):
         None,
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class OwnerReferenceModel3(BaseModel):
@@ -876,6 +1016,10 @@ class OwnerReferenceModel3(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel3(BaseModel):
     pass
@@ -886,6 +1030,10 @@ class PreconditionsModel3(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel3(BaseModel):
@@ -901,6 +1049,10 @@ class StatusCauseModel3(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel3(BaseModel):
@@ -928,6 +1080,10 @@ class StatusDetailsModel3(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel3(BaseModel):
@@ -997,6 +1153,10 @@ class APIResourceModel4(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel4(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -1015,6 +1175,10 @@ class APIResourceListModel4(BaseModel):
         ...,
         description='resources contains the name of the resources and if they are namespaced.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FieldsV1Model4(BaseModel):
@@ -1040,6 +1204,10 @@ class ListMetaModel4(BaseModel):
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class OwnerReferenceModel4(BaseModel):
     apiVersion: str = Field(..., description='API version of the referent.')
@@ -1063,6 +1231,10 @@ class OwnerReferenceModel4(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel4(BaseModel):
     pass
@@ -1073,6 +1245,10 @@ class PreconditionsModel4(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel4(BaseModel):
@@ -1088,6 +1264,10 @@ class StatusCauseModel4(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel4(BaseModel):
@@ -1115,6 +1295,10 @@ class StatusDetailsModel4(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel4(BaseModel):
@@ -1162,6 +1346,10 @@ class APIResourceModel5(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel5(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -1180,6 +1368,10 @@ class APIResourceListModel5(BaseModel):
         ...,
         description='resources contains the name of the resources and if they are namespaced.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FieldsV1Model5(BaseModel):
@@ -1205,6 +1397,10 @@ class ListMetaModel5(BaseModel):
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class OwnerReferenceModel5(BaseModel):
     apiVersion: str = Field(..., description='API version of the referent.')
@@ -1228,6 +1424,10 @@ class OwnerReferenceModel5(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel5(BaseModel):
     pass
@@ -1238,6 +1438,10 @@ class PreconditionsModel5(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel5(BaseModel):
@@ -1253,6 +1457,10 @@ class StatusCauseModel5(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel5(BaseModel):
@@ -1280,6 +1488,10 @@ class StatusDetailsModel5(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel5(BaseModel):
@@ -1327,6 +1539,10 @@ class APIResourceModel6(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel6(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -1346,6 +1562,10 @@ class APIResourceListModel6(BaseModel):
         description='resources contains the name of the resources and if they are namespaced.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FieldsV1Model6(BaseModel):
     pass
@@ -1363,6 +1583,10 @@ class LabelSelectorRequirementModel3(BaseModel):
         None,
         description='values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ListMetaModel6(BaseModel):
@@ -1383,6 +1607,10 @@ class ListMetaModel6(BaseModel):
         None,
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class OwnerReferenceModel6(BaseModel):
@@ -1407,6 +1635,10 @@ class OwnerReferenceModel6(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel6(BaseModel):
     pass
@@ -1417,6 +1649,10 @@ class PreconditionsModel6(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel6(BaseModel):
@@ -1432,6 +1668,10 @@ class StatusCauseModel6(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel6(BaseModel):
@@ -1459,6 +1699,10 @@ class StatusDetailsModel6(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel6(BaseModel):
@@ -1550,6 +1794,10 @@ class APIResourceModel7(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel7(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -1569,6 +1817,10 @@ class APIResourceListModel7(BaseModel):
         description='resources contains the name of the resources and if they are namespaced.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FieldsV1Model7(BaseModel):
     pass
@@ -1586,6 +1838,10 @@ class LabelSelectorRequirementModel4(BaseModel):
         None,
         description='values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ListMetaModel7(BaseModel):
@@ -1606,6 +1862,10 @@ class ListMetaModel7(BaseModel):
         None,
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class OwnerReferenceModel7(BaseModel):
@@ -1630,6 +1890,10 @@ class OwnerReferenceModel7(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel7(BaseModel):
     pass
@@ -1640,6 +1904,10 @@ class PreconditionsModel7(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel7(BaseModel):
@@ -1655,6 +1923,10 @@ class StatusCauseModel7(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel7(BaseModel):
@@ -1682,6 +1954,10 @@ class StatusDetailsModel7(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel7(BaseModel):
@@ -1729,6 +2005,10 @@ class APIResourceModel8(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel8(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -1747,6 +2027,10 @@ class APIResourceListModel8(BaseModel):
         ...,
         description='resources contains the name of the resources and if they are namespaced.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FieldsV1Model8(BaseModel):
@@ -1772,6 +2056,10 @@ class ListMetaModel8(BaseModel):
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class OwnerReferenceModel8(BaseModel):
     apiVersion: str = Field(..., description='API version of the referent.')
@@ -1795,6 +2083,10 @@ class OwnerReferenceModel8(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel8(BaseModel):
     pass
@@ -1805,6 +2097,10 @@ class PreconditionsModel8(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel8(BaseModel):
@@ -1820,6 +2116,10 @@ class StatusCauseModel8(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel8(BaseModel):
@@ -1847,6 +2147,10 @@ class StatusDetailsModel8(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel8(BaseModel):
@@ -1894,6 +2198,10 @@ class APIResourceModel9(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel9(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -1913,6 +2221,10 @@ class APIResourceListModel9(BaseModel):
         description='resources contains the name of the resources and if they are namespaced.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FieldsV1Model9(BaseModel):
     pass
@@ -1930,6 +2242,10 @@ class LabelSelectorRequirementModel5(BaseModel):
         None,
         description='values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ListMetaModel9(BaseModel):
@@ -1950,6 +2266,10 @@ class ListMetaModel9(BaseModel):
         None,
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class OwnerReferenceModel9(BaseModel):
@@ -1974,6 +2294,10 @@ class OwnerReferenceModel9(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel9(BaseModel):
     pass
@@ -1984,6 +2308,10 @@ class PreconditionsModel9(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel9(BaseModel):
@@ -1999,6 +2327,10 @@ class StatusCauseModel9(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel9(BaseModel):
@@ -2026,6 +2358,10 @@ class StatusDetailsModel9(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel9(BaseModel):
@@ -2117,6 +2453,10 @@ class APIResourceModel10(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel10(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -2135,6 +2475,10 @@ class APIResourceListModel10(BaseModel):
         ...,
         description='resources contains the name of the resources and if they are namespaced.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FieldsV1Model10(BaseModel):
@@ -2160,6 +2504,10 @@ class ListMetaModel10(BaseModel):
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class OwnerReferenceModel10(BaseModel):
     apiVersion: str = Field(..., description='API version of the referent.')
@@ -2183,6 +2531,10 @@ class OwnerReferenceModel10(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel10(BaseModel):
     pass
@@ -2193,6 +2545,10 @@ class PreconditionsModel10(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel10(BaseModel):
@@ -2208,6 +2564,10 @@ class StatusCauseModel10(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel10(BaseModel):
@@ -2235,6 +2595,10 @@ class StatusDetailsModel10(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel10(BaseModel):
@@ -2326,6 +2690,10 @@ class APIResourceModel11(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel11(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -2344,6 +2712,10 @@ class APIResourceListModel11(BaseModel):
         ...,
         description='resources contains the name of the resources and if they are namespaced.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FieldsV1Model11(BaseModel):
@@ -2371,6 +2743,10 @@ class OwnerReferenceModel11(BaseModel):
         ...,
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel11(BaseModel):
@@ -2440,6 +2816,10 @@ class APIResourceModel12(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel12(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -2458,6 +2838,10 @@ class APIResourceListModel12(BaseModel):
         ...,
         description='resources contains the name of the resources and if they are namespaced.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FieldsV1Model12(BaseModel):
@@ -2483,6 +2867,10 @@ class ListMetaModel11(BaseModel):
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class OwnerReferenceModel12(BaseModel):
     apiVersion: str = Field(..., description='API version of the referent.')
@@ -2506,6 +2894,10 @@ class OwnerReferenceModel12(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel11(BaseModel):
     pass
@@ -2516,6 +2908,10 @@ class PreconditionsModel11(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel11(BaseModel):
@@ -2531,6 +2927,10 @@ class StatusCauseModel11(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel11(BaseModel):
@@ -2558,6 +2958,10 @@ class StatusDetailsModel11(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel12(BaseModel):
@@ -2627,6 +3031,10 @@ class APIResourceModel13(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel13(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -2645,6 +3053,10 @@ class APIResourceListModel13(BaseModel):
         ...,
         description='resources contains the name of the resources and if they are namespaced.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FieldsV1Model13(BaseModel):
@@ -2672,6 +3084,10 @@ class OwnerReferenceModel13(BaseModel):
         ...,
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel13(BaseModel):
@@ -2719,6 +3135,10 @@ class APIResourceModel14(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel14(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -2738,6 +3158,10 @@ class APIResourceListModel14(BaseModel):
         description='resources contains the name of the resources and if they are namespaced.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FieldsV1Model14(BaseModel):
     pass
@@ -2755,6 +3179,10 @@ class LabelSelectorRequirementModel6(BaseModel):
         None,
         description='values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ListMetaModel12(BaseModel):
@@ -2775,6 +3203,10 @@ class ListMetaModel12(BaseModel):
         None,
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class OwnerReferenceModel14(BaseModel):
@@ -2799,6 +3231,10 @@ class OwnerReferenceModel14(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel12(BaseModel):
     pass
@@ -2809,6 +3245,10 @@ class PreconditionsModel12(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel12(BaseModel):
@@ -2824,6 +3264,10 @@ class StatusCauseModel12(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel12(BaseModel):
@@ -2851,6 +3295,10 @@ class StatusDetailsModel12(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel14(BaseModel):
@@ -2898,6 +3346,10 @@ class APIResourceModel15(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel15(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -2916,6 +3368,10 @@ class APIResourceListModel15(BaseModel):
         ...,
         description='resources contains the name of the resources and if they are namespaced.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FieldsV1Model15(BaseModel):
@@ -2940,6 +3396,10 @@ class ListMetaModel13(BaseModel):
         None,
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class MicroTime(BaseModel):
@@ -2971,6 +3431,10 @@ class OwnerReferenceModel15(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel13(BaseModel):
     pass
@@ -2981,6 +3445,10 @@ class PreconditionsModel13(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel13(BaseModel):
@@ -2996,6 +3464,10 @@ class StatusCauseModel13(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel13(BaseModel):
@@ -3023,6 +3495,10 @@ class StatusDetailsModel13(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel15(BaseModel):
@@ -3202,6 +3678,10 @@ class APIResourceModel16(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel16(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -3221,6 +3701,10 @@ class APIResourceListModel16(BaseModel):
         description='resources contains the name of the resources and if they are namespaced.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FieldsV1Model16(BaseModel):
     pass
@@ -3238,6 +3722,10 @@ class LabelSelectorRequirementModel7(BaseModel):
         None,
         description='values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ListMetaModel14(BaseModel):
@@ -3258,6 +3746,10 @@ class ListMetaModel14(BaseModel):
         None,
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class OwnerReferenceModel16(BaseModel):
@@ -3282,6 +3774,10 @@ class OwnerReferenceModel16(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel14(BaseModel):
     pass
@@ -3292,6 +3788,10 @@ class PreconditionsModel14(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel14(BaseModel):
@@ -3307,6 +3807,10 @@ class StatusCauseModel14(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel14(BaseModel):
@@ -3334,6 +3838,10 @@ class StatusDetailsModel14(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel16(BaseModel):
@@ -3403,6 +3911,10 @@ class APIResourceModel17(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel17(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -3421,6 +3933,10 @@ class APIResourceListModel17(BaseModel):
         ...,
         description='resources contains the name of the resources and if they are namespaced.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FieldsV1Model17(BaseModel):
@@ -3446,6 +3962,10 @@ class ListMetaModel15(BaseModel):
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class OwnerReferenceModel17(BaseModel):
     apiVersion: str = Field(..., description='API version of the referent.')
@@ -3468,6 +3988,10 @@ class OwnerReferenceModel17(BaseModel):
         ...,
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class PatchModel15(BaseModel):
@@ -3495,6 +4019,10 @@ class StatusCauseModel15(BaseModel):
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusDetailsModel15(BaseModel):
     causes: Optional[List[StatusCauseModel15]] = Field(
@@ -3521,6 +4049,10 @@ class StatusDetailsModel15(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel17(BaseModel):
@@ -3568,6 +4100,10 @@ class APIResourceModel18(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel18(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -3587,6 +4123,10 @@ class APIResourceListModel18(BaseModel):
         description='resources contains the name of the resources and if they are namespaced.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FieldsV1Model18(BaseModel):
     pass
@@ -3604,6 +4144,10 @@ class LabelSelectorRequirementModel8(BaseModel):
         None,
         description='values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ListMetaModel16(BaseModel):
@@ -3624,6 +4168,10 @@ class ListMetaModel16(BaseModel):
         None,
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class MicroTimeModel(BaseModel):
@@ -3655,6 +4203,10 @@ class OwnerReferenceModel18(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel16(BaseModel):
     pass
@@ -3665,6 +4217,10 @@ class PreconditionsModel16(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel16(BaseModel):
@@ -3680,6 +4236,10 @@ class StatusCauseModel16(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel16(BaseModel):
@@ -3707,6 +4267,10 @@ class StatusDetailsModel16(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel18(BaseModel):
@@ -3754,6 +4318,10 @@ class APIResourceModel19(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel19(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -3772,6 +4340,10 @@ class APIResourceListModel19(BaseModel):
         ...,
         description='resources contains the name of the resources and if they are namespaced.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FieldsV1Model19(BaseModel):
@@ -3796,6 +4368,10 @@ class ListMetaModel17(BaseModel):
         None,
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class MicroTimeModel1(BaseModel):
@@ -3827,6 +4403,10 @@ class OwnerReferenceModel19(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel17(BaseModel):
     pass
@@ -3837,6 +4417,10 @@ class PreconditionsModel17(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel17(BaseModel):
@@ -3852,6 +4436,10 @@ class StatusCauseModel17(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel17(BaseModel):
@@ -3879,6 +4467,10 @@ class StatusDetailsModel17(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel19(BaseModel):
@@ -3948,6 +4540,10 @@ class APIResourceModel20(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel20(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -3966,6 +4562,10 @@ class APIResourceListModel20(BaseModel):
         ...,
         description='resources contains the name of the resources and if they are namespaced.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FieldsV1Model20(BaseModel):
@@ -3991,6 +4591,10 @@ class ListMetaModel18(BaseModel):
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class OwnerReferenceModel20(BaseModel):
     apiVersion: str = Field(..., description='API version of the referent.')
@@ -4014,6 +4618,10 @@ class OwnerReferenceModel20(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel18(BaseModel):
     pass
@@ -4024,6 +4632,10 @@ class PreconditionsModel18(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel18(BaseModel):
@@ -4039,6 +4651,10 @@ class StatusCauseModel18(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel18(BaseModel):
@@ -4066,6 +4682,10 @@ class StatusDetailsModel18(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel20(BaseModel):
@@ -4113,6 +4733,10 @@ class APIResourceModel21(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel21(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -4132,6 +4756,10 @@ class APIResourceListModel21(BaseModel):
         description='resources contains the name of the resources and if they are namespaced.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class FieldsV1Model21(BaseModel):
     pass
@@ -4149,6 +4777,10 @@ class LabelSelectorRequirementModel9(BaseModel):
         None,
         description='values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ListMetaModel19(BaseModel):
@@ -4169,6 +4801,10 @@ class ListMetaModel19(BaseModel):
         None,
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class OwnerReferenceModel21(BaseModel):
@@ -4193,6 +4829,10 @@ class OwnerReferenceModel21(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel19(BaseModel):
     pass
@@ -4203,6 +4843,10 @@ class PreconditionsModel19(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel19(BaseModel):
@@ -4218,6 +4862,10 @@ class StatusCauseModel19(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel19(BaseModel):
@@ -4245,6 +4893,10 @@ class StatusDetailsModel19(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel21(BaseModel):
@@ -4292,6 +4944,10 @@ class APIResourceModel22(BaseModel):
         description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIResourceListModel22(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -4310,6 +4966,10 @@ class APIResourceListModel22(BaseModel):
         ...,
         description='resources contains the name of the resources and if they are namespaced.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class FieldsV1Model22(BaseModel):
@@ -4335,6 +4995,10 @@ class ListMetaModel20(BaseModel):
         description='Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class OwnerReferenceModel22(BaseModel):
     apiVersion: str = Field(..., description='API version of the referent.')
@@ -4358,6 +5022,10 @@ class OwnerReferenceModel22(BaseModel):
         description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PatchModel20(BaseModel):
     pass
@@ -4368,6 +5036,10 @@ class PreconditionsModel20(BaseModel):
         None, description='Specifies the target ResourceVersion'
     )
     uid: Optional[str] = Field(None, description='Specifies the target UID.')
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusCauseModel20(BaseModel):
@@ -4383,6 +5055,10 @@ class StatusCauseModel20(BaseModel):
         None,
         description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StatusDetailsModel20(BaseModel):
@@ -4410,6 +5086,10 @@ class StatusDetailsModel20(BaseModel):
         None,
         description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class TimeModel22(BaseModel):
@@ -4482,6 +5162,10 @@ class DeleteOptions(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ManagedFieldsEntry(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -4512,6 +5196,10 @@ class ManagedFieldsEntry(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMeta(BaseModel):
@@ -4576,6 +5264,10 @@ class ObjectMeta(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class Status(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -4610,6 +5302,10 @@ class Status(BaseModel):
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class WatchEvent(BaseModel):
     object: runtime.RawExtension = Field(
@@ -4617,6 +5313,10 @@ class WatchEvent(BaseModel):
         description='Object is:\n * If Type is Added or Modified: the new state of the object.\n * If Type is Deleted: the state of the object immediately before deletion.\n * If Type is Error: *Status is recommended; other types may make sense\n   depending on context.',
     )
     type: str
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class APIGroup(BaseModel):
@@ -4640,6 +5340,10 @@ class APIGroup(BaseModel):
     versions: List[GroupVersionForDiscovery] = Field(
         ..., description='versions are the versions supported in this group.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class DeleteOptionsModel(BaseModel):
@@ -4672,6 +5376,10 @@ class DeleteOptionsModel(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LabelSelector(BaseModel):
     matchExpressions: Optional[List[LabelSelectorRequirement]] = Field(
@@ -4682,6 +5390,10 @@ class LabelSelector(BaseModel):
         None,
         description='matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ManagedFieldsEntryModel(BaseModel):
@@ -4713,6 +5425,10 @@ class ManagedFieldsEntryModel(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel(BaseModel):
@@ -4777,6 +5493,10 @@ class ObjectMetaModel(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -4810,6 +5530,10 @@ class StatusModel(BaseModel):
         None,
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class WatchEventModel(BaseModel):
@@ -4850,6 +5574,10 @@ class DeleteOptionsModel1(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LabelSelectorModel(BaseModel):
     matchExpressions: Optional[List[LabelSelectorRequirementModel]] = Field(
@@ -4860,6 +5588,10 @@ class LabelSelectorModel(BaseModel):
         None,
         description='matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ManagedFieldsEntryModel1(BaseModel):
@@ -4891,6 +5623,10 @@ class ManagedFieldsEntryModel1(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel1(BaseModel):
@@ -4955,6 +5691,10 @@ class ObjectMetaModel1(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel1(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -4988,6 +5728,10 @@ class StatusModel1(BaseModel):
         None,
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class WatchEventModel1(BaseModel):
@@ -5023,6 +5767,10 @@ class Condition(BaseModel):
         description='type of condition in CamelCase or in foo.example.com/CamelCase.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DeleteOptionsModel2(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5054,6 +5802,10 @@ class DeleteOptionsModel2(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LabelSelectorModel1(BaseModel):
     matchExpressions: Optional[List[LabelSelectorRequirementModel1]] = Field(
@@ -5064,6 +5816,10 @@ class LabelSelectorModel1(BaseModel):
         None,
         description='matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ManagedFieldsEntryModel2(BaseModel):
@@ -5095,6 +5851,10 @@ class ManagedFieldsEntryModel2(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel2(BaseModel):
@@ -5159,6 +5919,10 @@ class ObjectMetaModel2(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel2(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5193,6 +5957,10 @@ class StatusModel2(BaseModel):
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class WatchEventModel2(BaseModel):
     object: runtime.RawExtensionModel2 = Field(
@@ -5223,6 +5991,10 @@ class APIGroupModel(BaseModel):
     versions: List[GroupVersionForDiscoveryModel] = Field(
         ..., description='versions are the versions supported in this group.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class DeleteOptionsModel3(BaseModel):
@@ -5255,6 +6027,10 @@ class DeleteOptionsModel3(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LabelSelectorModel2(BaseModel):
     matchExpressions: Optional[List[LabelSelectorRequirementModel2]] = Field(
@@ -5265,6 +6041,10 @@ class LabelSelectorModel2(BaseModel):
         None,
         description='matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ManagedFieldsEntryModel3(BaseModel):
@@ -5296,6 +6076,10 @@ class ManagedFieldsEntryModel3(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel3(BaseModel):
@@ -5360,6 +6144,10 @@ class ObjectMetaModel3(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel3(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5394,6 +6182,10 @@ class StatusModel3(BaseModel):
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class WatchEventModel3(BaseModel):
     object: runtime.RawExtensionModel3 = Field(
@@ -5424,6 +6216,10 @@ class APIGroupModel1(BaseModel):
     versions: List[GroupVersionForDiscoveryModel1] = Field(
         ..., description='versions are the versions supported in this group.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class DeleteOptionsModel4(BaseModel):
@@ -5456,6 +6252,10 @@ class DeleteOptionsModel4(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ManagedFieldsEntryModel4(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5486,6 +6286,10 @@ class ManagedFieldsEntryModel4(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel4(BaseModel):
@@ -5550,6 +6354,10 @@ class ObjectMetaModel4(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel4(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5583,6 +6391,10 @@ class StatusModel4(BaseModel):
         None,
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class WatchEventModel4(BaseModel):
@@ -5623,6 +6435,10 @@ class DeleteOptionsModel5(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ManagedFieldsEntryModel5(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5653,6 +6469,10 @@ class ManagedFieldsEntryModel5(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel5(BaseModel):
@@ -5717,6 +6537,10 @@ class ObjectMetaModel5(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel5(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5750,6 +6574,10 @@ class StatusModel5(BaseModel):
         None,
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class WatchEventModel5(BaseModel):
@@ -5790,6 +6618,10 @@ class DeleteOptionsModel6(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LabelSelectorModel3(BaseModel):
     matchExpressions: Optional[List[LabelSelectorRequirementModel3]] = Field(
@@ -5800,6 +6632,10 @@ class LabelSelectorModel3(BaseModel):
         None,
         description='matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ManagedFieldsEntryModel6(BaseModel):
@@ -5831,6 +6667,10 @@ class ManagedFieldsEntryModel6(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel6(BaseModel):
@@ -5895,6 +6735,10 @@ class ObjectMetaModel6(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel6(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5929,6 +6773,10 @@ class StatusModel6(BaseModel):
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class WatchEventModel6(BaseModel):
     object: runtime.RawExtensionModel6 = Field(
@@ -5960,6 +6808,10 @@ class APIGroupModel2(BaseModel):
         ..., description='versions are the versions supported in this group.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIGroupModel3(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5983,6 +6835,10 @@ class APIGroupModel3(BaseModel):
         ..., description='versions are the versions supported in this group.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIGroupList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -5996,6 +6852,10 @@ class APIGroupList(BaseModel):
         None,
         description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class DeleteOptionsModel7(BaseModel):
@@ -6028,6 +6888,10 @@ class DeleteOptionsModel7(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LabelSelectorModel4(BaseModel):
     matchExpressions: Optional[List[LabelSelectorRequirementModel4]] = Field(
@@ -6038,6 +6902,10 @@ class LabelSelectorModel4(BaseModel):
         None,
         description='matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ManagedFieldsEntryModel7(BaseModel):
@@ -6069,6 +6937,10 @@ class ManagedFieldsEntryModel7(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel7(BaseModel):
@@ -6133,6 +7005,10 @@ class ObjectMetaModel7(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel7(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6166,6 +7042,10 @@ class StatusModel7(BaseModel):
         None,
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class WatchEventModel7(BaseModel):
@@ -6206,6 +7086,10 @@ class DeleteOptionsModel8(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ManagedFieldsEntryModel8(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6236,6 +7120,10 @@ class ManagedFieldsEntryModel8(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel8(BaseModel):
@@ -6300,6 +7188,10 @@ class ObjectMetaModel8(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel8(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6333,6 +7225,10 @@ class StatusModel8(BaseModel):
         None,
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class WatchEventModel8(BaseModel):
@@ -6373,6 +7269,10 @@ class DeleteOptionsModel9(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LabelSelectorModel5(BaseModel):
     matchExpressions: Optional[List[LabelSelectorRequirementModel5]] = Field(
@@ -6383,6 +7283,10 @@ class LabelSelectorModel5(BaseModel):
         None,
         description='matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ManagedFieldsEntryModel9(BaseModel):
@@ -6414,6 +7318,10 @@ class ManagedFieldsEntryModel9(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel9(BaseModel):
@@ -6478,6 +7386,10 @@ class ObjectMetaModel9(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel9(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6512,6 +7424,10 @@ class StatusModel9(BaseModel):
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class WatchEventModel9(BaseModel):
     object: runtime.RawExtensionModel9 = Field(
@@ -6543,6 +7459,10 @@ class APIGroupModel4(BaseModel):
         ..., description='versions are the versions supported in this group.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIGroupModel5(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6565,6 +7485,10 @@ class APIGroupModel5(BaseModel):
     versions: List[GroupVersionForDiscoveryModel5] = Field(
         ..., description='versions are the versions supported in this group.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class DeleteOptionsModel10(BaseModel):
@@ -6597,6 +7521,10 @@ class DeleteOptionsModel10(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ManagedFieldsEntryModel10(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6627,6 +7555,10 @@ class ManagedFieldsEntryModel10(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel10(BaseModel):
@@ -6691,6 +7623,10 @@ class ObjectMetaModel10(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel10(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6725,6 +7661,10 @@ class StatusModel10(BaseModel):
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class WatchEventModel10(BaseModel):
     object: runtime.RawExtensionModel10 = Field(
@@ -6756,6 +7696,10 @@ class APIGroupModel6(BaseModel):
         ..., description='versions are the versions supported in this group.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIGroupModel7(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6778,6 +7722,10 @@ class APIGroupModel7(BaseModel):
     versions: List[GroupVersionForDiscoveryModel7] = Field(
         ..., description='versions are the versions supported in this group.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ManagedFieldsEntryModel11(BaseModel):
@@ -6809,6 +7757,10 @@ class ManagedFieldsEntryModel11(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel11(BaseModel):
@@ -6873,6 +7825,10 @@ class ObjectMetaModel11(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIGroupModel8(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6895,6 +7851,10 @@ class APIGroupModel8(BaseModel):
     versions: List[GroupVersionForDiscoveryModel8] = Field(
         ..., description='versions are the versions supported in this group.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class DeleteOptionsModel11(BaseModel):
@@ -6927,6 +7887,10 @@ class DeleteOptionsModel11(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ManagedFieldsEntryModel12(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -6957,6 +7921,10 @@ class ManagedFieldsEntryModel12(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel12(BaseModel):
@@ -7021,6 +7989,10 @@ class ObjectMetaModel12(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel11(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -7055,6 +8027,10 @@ class StatusModel11(BaseModel):
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class WatchEventModel11(BaseModel):
     object: runtime.RawExtensionModel11 = Field(
@@ -7086,6 +8062,10 @@ class APIGroupModel9(BaseModel):
         ..., description='versions are the versions supported in this group.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ManagedFieldsEntryModel13(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -7116,6 +8096,10 @@ class ManagedFieldsEntryModel13(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel13(BaseModel):
@@ -7180,6 +8164,10 @@ class ObjectMetaModel13(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DeleteOptionsModel12(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -7211,6 +8199,10 @@ class DeleteOptionsModel12(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LabelSelectorModel6(BaseModel):
     matchExpressions: Optional[List[LabelSelectorRequirementModel6]] = Field(
@@ -7221,6 +8213,10 @@ class LabelSelectorModel6(BaseModel):
         None,
         description='matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ManagedFieldsEntryModel14(BaseModel):
@@ -7252,6 +8248,10 @@ class ManagedFieldsEntryModel14(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel14(BaseModel):
@@ -7316,6 +8316,10 @@ class ObjectMetaModel14(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel12(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -7349,6 +8353,10 @@ class StatusModel12(BaseModel):
         None,
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class WatchEventModel12(BaseModel):
@@ -7389,6 +8397,10 @@ class DeleteOptionsModel13(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ManagedFieldsEntryModel15(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -7419,6 +8431,10 @@ class ManagedFieldsEntryModel15(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel15(BaseModel):
@@ -7483,6 +8499,10 @@ class ObjectMetaModel15(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel13(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -7517,6 +8537,10 @@ class StatusModel13(BaseModel):
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class WatchEventModel13(BaseModel):
     object: runtime.RawExtensionModel13 = Field(
@@ -7550,6 +8574,10 @@ class APIGroupModel10(BaseModel):
         ..., description='versions are the versions supported in this group.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIGroupModel11(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -7574,6 +8602,10 @@ class APIGroupModel11(BaseModel):
     versions: List[GroupVersionForDiscoveryModel11] = Field(
         ..., description='versions are the versions supported in this group.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class APIGroupModel12(BaseModel):
@@ -7600,6 +8632,10 @@ class APIGroupModel12(BaseModel):
         ..., description='versions are the versions supported in this group.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIGroupModel13(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -7624,6 +8660,10 @@ class APIGroupModel13(BaseModel):
     versions: List[GroupVersionForDiscoveryModel13] = Field(
         ..., description='versions are the versions supported in this group.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class APIGroupModel14(BaseModel):
@@ -7650,6 +8690,10 @@ class APIGroupModel14(BaseModel):
         ..., description='versions are the versions supported in this group.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIGroupModel15(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -7674,6 +8718,10 @@ class APIGroupModel15(BaseModel):
     versions: List[GroupVersionForDiscoveryModel15] = Field(
         ..., description='versions are the versions supported in this group.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ConditionModel(BaseModel):
@@ -7700,6 +8748,10 @@ class ConditionModel(BaseModel):
         ...,
         description='type of condition in CamelCase or in foo.example.com/CamelCase.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class DeleteOptionsModel14(BaseModel):
@@ -7732,6 +8784,10 @@ class DeleteOptionsModel14(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LabelSelectorModel7(BaseModel):
     matchExpressions: Optional[List[LabelSelectorRequirementModel7]] = Field(
@@ -7742,6 +8798,10 @@ class LabelSelectorModel7(BaseModel):
         None,
         description='matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ManagedFieldsEntryModel16(BaseModel):
@@ -7773,6 +8833,10 @@ class ManagedFieldsEntryModel16(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel16(BaseModel):
@@ -7837,6 +8901,10 @@ class ObjectMetaModel16(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel14(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -7871,6 +8939,10 @@ class StatusModel14(BaseModel):
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class WatchEventModel14(BaseModel):
     object: runtime.RawExtensionModel14 = Field(
@@ -7904,6 +8976,10 @@ class APIGroupModel16(BaseModel):
         ..., description='versions are the versions supported in this group.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DeleteOptionsModel15(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -7935,6 +9011,10 @@ class DeleteOptionsModel15(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ManagedFieldsEntryModel17(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -7965,6 +9045,10 @@ class ManagedFieldsEntryModel17(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel17(BaseModel):
@@ -8029,6 +9113,10 @@ class ObjectMetaModel17(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel15(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -8062,6 +9150,10 @@ class StatusModel15(BaseModel):
         None,
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class WatchEventModel15(BaseModel):
@@ -8097,6 +9189,10 @@ class ConditionModel1(BaseModel):
         description='type of condition in CamelCase or in foo.example.com/CamelCase.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DeleteOptionsModel16(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -8128,6 +9224,10 @@ class DeleteOptionsModel16(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LabelSelectorModel8(BaseModel):
     matchExpressions: Optional[List[LabelSelectorRequirementModel8]] = Field(
@@ -8138,6 +9238,10 @@ class LabelSelectorModel8(BaseModel):
         None,
         description='matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ManagedFieldsEntryModel18(BaseModel):
@@ -8169,6 +9273,10 @@ class ManagedFieldsEntryModel18(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel18(BaseModel):
@@ -8233,6 +9341,10 @@ class ObjectMetaModel18(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel16(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -8266,6 +9378,10 @@ class StatusModel16(BaseModel):
         None,
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class WatchEventModel16(BaseModel):
@@ -8306,6 +9422,10 @@ class DeleteOptionsModel17(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ManagedFieldsEntryModel19(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -8336,6 +9456,10 @@ class ManagedFieldsEntryModel19(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel19(BaseModel):
@@ -8400,6 +9524,10 @@ class ObjectMetaModel19(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel17(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -8434,6 +9562,10 @@ class StatusModel17(BaseModel):
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class WatchEventModel17(BaseModel):
     object: runtime.RawExtensionModel17 = Field(
@@ -8467,6 +9599,10 @@ class APIGroupModel17(BaseModel):
         ..., description='versions are the versions supported in this group.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class DeleteOptionsModel18(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -8498,6 +9634,10 @@ class DeleteOptionsModel18(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ManagedFieldsEntryModel20(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -8528,6 +9668,10 @@ class ManagedFieldsEntryModel20(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel20(BaseModel):
@@ -8592,6 +9736,10 @@ class ObjectMetaModel20(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel18(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -8625,6 +9773,10 @@ class StatusModel18(BaseModel):
         None,
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class WatchEventModel18(BaseModel):
@@ -8665,6 +9817,10 @@ class DeleteOptionsModel19(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class LabelSelectorModel9(BaseModel):
     matchExpressions: Optional[List[LabelSelectorRequirementModel9]] = Field(
@@ -8675,6 +9831,10 @@ class LabelSelectorModel9(BaseModel):
         None,
         description='matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ManagedFieldsEntryModel21(BaseModel):
@@ -8706,6 +9866,10 @@ class ManagedFieldsEntryModel21(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel21(BaseModel):
@@ -8770,6 +9934,10 @@ class ObjectMetaModel21(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel19(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -8803,6 +9971,10 @@ class StatusModel19(BaseModel):
         None,
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class WatchEventModel19(BaseModel):
@@ -8843,6 +10015,10 @@ class DeleteOptionsModel20(BaseModel):
         description="Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ManagedFieldsEntryModel22(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -8873,6 +10049,10 @@ class ManagedFieldsEntryModel22(BaseModel):
         None,
         description='Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ObjectMetaModel22(BaseModel):
@@ -8937,6 +10117,10 @@ class ObjectMetaModel22(BaseModel):
         description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StatusModel20(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -8971,6 +10155,10 @@ class StatusModel20(BaseModel):
         description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class WatchEventModel20(BaseModel):
     object: runtime.RawExtensionModel20 = Field(
@@ -9004,6 +10192,10 @@ class APIGroupModel18(BaseModel):
         ..., description='versions are the versions supported in this group.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class APIVersions(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -9021,3 +10213,7 @@ class APIVersions(BaseModel):
     versions: List[str] = Field(
         ..., description='versions are the api versions that are available.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

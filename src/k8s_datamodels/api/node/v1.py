@@ -23,12 +23,20 @@ class Scheduling(BaseModel):
         description='tolerations are appended (excluding duplicates) to pods running with this RuntimeClass during admission, effectively unioning the set of nodes tolerated by the pod and the RuntimeClass.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class Overhead(BaseModel):
     podFixed: Optional[Dict[str, resource.QuantityModel1]] = Field(
         None,
         description='PodFixed represents the fixed resource overhead associated with running a pod.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class RuntimeClass(BaseModel):
@@ -57,6 +65,10 @@ class RuntimeClass(BaseModel):
         description='Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class RuntimeClassList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -74,3 +86,7 @@ class RuntimeClassList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

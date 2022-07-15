@@ -33,6 +33,10 @@ class RuleWithOperations(BaseModel):
         description='scope specifies the scope of this rule. Valid values are "Cluster", "Namespaced", and "*" "Cluster" means that only cluster-scoped resources will match this rule. Namespace API objects are cluster-scoped. "Namespaced" means that only namespaced resources will match this rule. "*" means that there are no scope restrictions. Subresources match the scope of their parent resource. Default is "*".',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ServiceReference(BaseModel):
     name: str = Field(..., description='`name` is the name of the service. Required')
@@ -48,6 +52,10 @@ class ServiceReference(BaseModel):
         description='If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class WebhookClientConfig(BaseModel):
     caBundle: Optional[str] = Field(
@@ -62,6 +70,10 @@ class WebhookClientConfig(BaseModel):
         None,
         description='`url` gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified.\n\nThe `host` should not refer to a service running in the cluster; use the `service` field instead. The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address.\n\nPlease note that using `localhost` or `127.0.0.1` as a `host` is risky unless you take great care to run this webhook on all hosts which run an apiserver which might need to make calls to this webhook. Such installs are likely to be non-portable, i.e., not easy to turn up in a new cluster.\n\nThe scheme must be "https"; the URL must begin with "https://".\n\nA path is optional, and if present may be any string permissible in a URL. You may use the path to pass an arbitrary string to the webhook, for example, a cluster identifier.\n\nAttempting to use a user or basic auth e.g. "user:password@" is not allowed. Fragments ("#...") and query parameters ("?...") are not allowed, either.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class MutatingWebhook(BaseModel):
@@ -110,6 +122,10 @@ class MutatingWebhook(BaseModel):
         description='TimeoutSeconds specifies the timeout for this webhook. After the timeout passes, the webhook call will be ignored or the API call will fail based on the failure policy. The timeout value must be between 1 and 30 seconds. Default to 10 seconds.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class MutatingWebhookConfiguration(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -129,6 +145,10 @@ class MutatingWebhookConfiguration(BaseModel):
         description='Webhooks is a list of webhooks and the affected resources and operations.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class MutatingWebhookConfigurationList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -146,6 +166,10 @@ class MutatingWebhookConfigurationList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class ValidatingWebhook(BaseModel):
@@ -190,6 +214,10 @@ class ValidatingWebhook(BaseModel):
         description='TimeoutSeconds specifies the timeout for this webhook. After the timeout passes, the webhook call will be ignored or the API call will fail based on the failure policy. The timeout value must be between 1 and 30 seconds. Default to 10 seconds.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ValidatingWebhookConfiguration(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -209,6 +237,10 @@ class ValidatingWebhookConfiguration(BaseModel):
         description='Webhooks is a list of webhooks and the affected resources and operations.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ValidatingWebhookConfigurationList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -226,3 +258,7 @@ class ValidatingWebhookConfigurationList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

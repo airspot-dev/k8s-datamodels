@@ -41,6 +41,10 @@ class PriorityClass(BaseModel):
         description='The value of this priority class. This is the actual priority that pods receive when they have the name of this class in their pod spec.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class PriorityClassList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -58,3 +62,7 @@ class PriorityClassList(BaseModel):
         {},
         description='Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

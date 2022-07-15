@@ -26,6 +26,10 @@ class EndpointConditions(BaseModel):
         description='terminating indicates that this endpoint is terminating. A nil value indicates an unknown state. Consumers should interpret this unknown state to mean that the endpoint is not terminating. This field can be enabled with the EndpointSliceTerminatingCondition feature gate.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EndpointPort(BaseModel):
     appProtocol: Optional[str] = Field(
@@ -45,6 +49,10 @@ class EndpointPort(BaseModel):
         description='The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class ForZone(BaseModel):
     name: str = Field(..., description='name represents the name of the zone.')
@@ -55,6 +63,10 @@ class EndpointHints(BaseModel):
         None,
         description='forZones indicates the zone(s) this endpoint should be consumed by to enable topology aware routing.',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class Endpoint(BaseModel):
@@ -90,6 +102,10 @@ class Endpoint(BaseModel):
         None, description='zone is the name of the Zone this endpoint exists in.'
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EndpointSlice(BaseModel):
     addressType: str = Field(
@@ -116,6 +132,10 @@ class EndpointSlice(BaseModel):
         description='ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100 ports.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class EndpointSliceList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -130,3 +150,7 @@ class EndpointSliceList(BaseModel):
     metadata: Optional[v1_1.ListMetaModel5] = Field(
         {}, description='Standard list metadata.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)

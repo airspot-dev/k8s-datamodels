@@ -24,6 +24,10 @@ class ServerStorageVersion(BaseModel):
         description='The API server encodes the object to this version when persisting it in the backend (e.g., etcd).',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StorageVersionSpec(BaseModel):
     pass
@@ -50,6 +54,10 @@ class StorageVersionCondition(BaseModel):
     )
     type: str = Field(..., description='Type of the condition.')
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StorageVersionStatus(BaseModel):
     commonEncodingVersion: Optional[str] = Field(
@@ -63,6 +71,10 @@ class StorageVersionStatus(BaseModel):
     storageVersions: Optional[List[ServerStorageVersion]] = Field(
         None, description='The reported versions per API server instance.'
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
 
 
 class StorageVersion(BaseModel):
@@ -86,6 +98,10 @@ class StorageVersion(BaseModel):
         description='API server instances report the version they can decode and the version they encode objects to when persisting objects in the backend.',
     )
 
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
+
 
 class StorageVersionList(BaseModel):
     apiVersion: Optional[str] = Field(
@@ -103,3 +119,7 @@ class StorageVersionList(BaseModel):
         {},
         description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
     )
+
+    def dict(self, **kwargs):
+        kwargs["exclude_unset"] = True
+        return super().dict(**kwargs)
