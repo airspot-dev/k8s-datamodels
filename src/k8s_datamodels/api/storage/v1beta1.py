@@ -8,8 +8,8 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
-from k8s_datamodels.io.k8s.apimachinery.pkg.api import resource
-from k8s_datamodels.io.k8s.apimachinery.pkg.apis.meta import v1
+from k8s_datamodels.apimachinery.pkg.api import resource
+from k8s_datamodels.apimachinery.pkg.apis.meta import v1
 
 
 class CSIStorageCapacity(BaseModel):
