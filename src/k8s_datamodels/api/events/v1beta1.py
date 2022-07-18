@@ -26,7 +26,7 @@ class EventSeries(BaseModel):
 class Event(BaseModel):
     action: Optional[str] = Field(
         None,
-        description='action is what action was taken/failed regarding to the regarding object. It is machine-readable. This field cannot be empty for new Events and it can have at most 128 characters.',
+        description='action is what action was taken/failed regarding to the regarding object. It is machine-readable. This field can have at most 128 characters.',
     )
     apiVersion: Optional[str] = Field(
         None,
@@ -66,7 +66,7 @@ class Event(BaseModel):
     )
     reason: Optional[str] = Field(
         None,
-        description='reason is why the action was taken. It is human-readable. This field cannot be empty for new Events and it can have at most 128 characters.',
+        description='reason is why the action was taken. It is human-readable. This field can have at most 128 characters.',
     )
     regarding: Optional[v1_1.ObjectReference] = Field(
         None,
@@ -90,7 +90,7 @@ class Event(BaseModel):
     )
     type: Optional[str] = Field(
         None,
-        description='type is the type of this event (Normal, Warning), new types could be added in the future. It is machine-readable. This field cannot be empty for new Events.',
+        description='type is the type of this event (Normal, Warning), new types could be added in the future. It is machine-readable.',
     )
 
 

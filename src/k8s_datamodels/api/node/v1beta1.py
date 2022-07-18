@@ -50,7 +50,7 @@ class RuntimeClass(BaseModel):
     )
     overhead: Optional[Overhead] = Field(
         None,
-        description='Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see\n https://kubernetes.io/docs/concepts/scheduling-eviction/pod-overhead/',
+        description='Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/688-pod-overhead/README.md',
     )
     scheduling: Optional[Scheduling] = Field(
         None,

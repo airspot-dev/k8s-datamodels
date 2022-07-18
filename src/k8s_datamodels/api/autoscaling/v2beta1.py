@@ -24,42 +24,36 @@ class CrossVersionObjectReference(BaseModel):
     )
 
 
-class HPAScalingPolicy(BaseModel):
-    periodSeconds: int = Field(
+class ContainerResourceMetricSource(BaseModel):
+    container: str = Field(
         ...,
-        description='PeriodSeconds specifies the window of time for which the policy should hold true. PeriodSeconds must be greater than zero and less than or equal to 1800 (30 min).',
+        description='container is the name of the container in the pods of the scaling target',
     )
-    type: str = Field(..., description='Type is used to specify the scaling policy.')
-    value: int = Field(
+    name: str = Field(..., description='name is the name of the resource in question.')
+    targetAverageUtilization: Optional[int] = Field(
+        None,
+        description='targetAverageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.',
+    )
+    targetAverageValue: Optional[resource.Quantity] = Field(
+        None,
+        description='targetAverageValue is the target value of the average of the resource metric across all relevant pods, as a raw value (instead of as a percentage of the request), similar to the "pods" metric source type.',
+    )
+
+
+class ContainerResourceMetricStatus(BaseModel):
+    container: str = Field(
         ...,
-        description='Value contains the amount of change which is permitted by the policy. It must be greater than zero',
+        description='container is the name of the container in the pods of the scaling target',
     )
-
-
-class HPAScalingRules(BaseModel):
-    policies: Optional[List[HPAScalingPolicy]] = Field(
+    currentAverageUtilization: Optional[int] = Field(
         None,
-        description='policies is a list of potential scaling polices which can be used during scaling. At least one policy must be specified, otherwise the HPAScalingRules will be discarded as invalid',
+        description='currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.  It will only be present if `targetAverageValue` was set in the corresponding metric specification.',
     )
-    selectPolicy: Optional[str] = Field(
-        None,
-        description='selectPolicy is used to specify which policy should be used. If not set, the default value Max is used.',
+    currentAverageValue: resource.Quantity = Field(
+        ...,
+        description='currentAverageValue is the current value of the average of the resource metric across all relevant pods, as a raw value (instead of as a percentage of the request), similar to the "pods" metric source type. It will always be set, regardless of the corresponding metric specification.',
     )
-    stabilizationWindowSeconds: Optional[int] = Field(
-        None,
-        description='StabilizationWindowSeconds is the number of seconds for which past recommendations should be considered while scaling up or scaling down. StabilizationWindowSeconds must be greater than or equal to zero and less than or equal to 3600 (one hour). If not set, use the default values: - For scale up: 0 (i.e. no stabilization is done). - For scale down: 300 (i.e. the stabilization window is 300 seconds long).',
-    )
-
-
-class HorizontalPodAutoscalerBehavior(BaseModel):
-    scaleDown: Optional[HPAScalingRules] = Field(
-        None,
-        description='scaleDown is scaling policy for scaling Down. If not set, the default value is to allow to scale down to minReplicas pods, with a 300 second stabilization window (i.e., the highest recommendation for the last 300sec is used).',
-    )
-    scaleUp: Optional[HPAScalingRules] = Field(
-        None,
-        description='scaleUp is scaling policy for scaling Up. If not set, the default value is the higher of:\n  * increase no more than 4 pods per 60 seconds\n  * double the number of pods per 60 seconds\nNo stabilization is used.',
-    )
+    name: str = Field(..., description='name is the name of the resource in question.')
 
 
 class HorizontalPodAutoscalerCondition(BaseModel):
@@ -80,148 +74,141 @@ class HorizontalPodAutoscalerCondition(BaseModel):
     type: str = Field(..., description='type describes the current condition')
 
 
-class MetricTarget(BaseModel):
-    averageUtilization: Optional[int] = Field(
-        None,
-        description='averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type',
-    )
-    averageValue: Optional[resource.Quantity] = Field(
-        None,
-        description='averageValue is the target value of the average of the metric across all relevant pods (as a quantity)',
-    )
-    type: str = Field(
-        ...,
-        description='type represents whether the metric type is Utilization, Value, or AverageValue',
-    )
-    value: Optional[resource.Quantity] = Field(
-        None, description='value is the target value of the metric (as a quantity).'
-    )
-
-
-class MetricValueStatus(BaseModel):
-    averageUtilization: Optional[int] = Field(
-        None,
-        description='currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.',
-    )
-    averageValue: Optional[resource.Quantity] = Field(
-        None,
-        description='averageValue is the current value of the average of the metric across all relevant pods (as a quantity)',
-    )
-    value: Optional[resource.Quantity] = Field(
-        None, description='value is the current value of the metric (as a quantity).'
-    )
-
-
 class ResourceMetricSource(BaseModel):
     name: str = Field(..., description='name is the name of the resource in question.')
-    target: MetricTarget = Field(
-        ..., description='target specifies the target value for the given metric'
+    targetAverageUtilization: Optional[int] = Field(
+        None,
+        description='targetAverageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.',
+    )
+    targetAverageValue: Optional[resource.Quantity] = Field(
+        None,
+        description='targetAverageValue is the target value of the average of the resource metric across all relevant pods, as a raw value (instead of as a percentage of the request), similar to the "pods" metric source type.',
     )
 
 
 class ResourceMetricStatus(BaseModel):
-    current: MetricValueStatus = Field(
-        ..., description='current contains the current value for the given metric'
+    currentAverageUtilization: Optional[int] = Field(
+        None,
+        description='currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.  It will only be present if `targetAverageValue` was set in the corresponding metric specification.',
     )
-    name: str = Field(..., description='Name is the name of the resource in question.')
-
-
-class ContainerResourceMetricSource(BaseModel):
-    container: str = Field(
+    currentAverageValue: resource.Quantity = Field(
         ...,
-        description='container is the name of the container in the pods of the scaling target',
+        description='currentAverageValue is the current value of the average of the resource metric across all relevant pods, as a raw value (instead of as a percentage of the request), similar to the "pods" metric source type. It will always be set, regardless of the corresponding metric specification.',
     )
     name: str = Field(..., description='name is the name of the resource in question.')
-    target: MetricTarget = Field(
-        ..., description='target specifies the target value for the given metric'
-    )
-
-
-class ContainerResourceMetricStatus(BaseModel):
-    container: str = Field(
-        ...,
-        description='Container is the name of the container in the pods of the scaling target',
-    )
-    current: MetricValueStatus = Field(
-        ..., description='current contains the current value for the given metric'
-    )
-    name: str = Field(..., description='Name is the name of the resource in question.')
-
-
-class MetricIdentifier(BaseModel):
-    name: str = Field(..., description='name is the name of the given metric')
-    selector: Optional[v1.LabelSelector] = Field(
-        None,
-        description='selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.',
-    )
-
-
-class ObjectMetricSource(BaseModel):
-    describedObject: CrossVersionObjectReference = Field(
-        ...,
-        description='describedObject specifies the descriptions of a object,such as kind,name apiVersion',
-    )
-    metric: MetricIdentifier = Field(
-        ..., description='metric identifies the target metric by name and selector'
-    )
-    target: MetricTarget = Field(
-        ..., description='target specifies the target value for the given metric'
-    )
-
-
-class ObjectMetricStatus(BaseModel):
-    current: MetricValueStatus = Field(
-        ..., description='current contains the current value for the given metric'
-    )
-    describedObject: CrossVersionObjectReference = Field(
-        ...,
-        description='DescribedObject specifies the descriptions of a object,such as kind,name apiVersion',
-    )
-    metric: MetricIdentifier = Field(
-        ..., description='metric identifies the target metric by name and selector'
-    )
-
-
-class PodsMetricSource(BaseModel):
-    metric: MetricIdentifier = Field(
-        ..., description='metric identifies the target metric by name and selector'
-    )
-    target: MetricTarget = Field(
-        ..., description='target specifies the target value for the given metric'
-    )
-
-
-class PodsMetricStatus(BaseModel):
-    current: MetricValueStatus = Field(
-        ..., description='current contains the current value for the given metric'
-    )
-    metric: MetricIdentifier = Field(
-        ..., description='metric identifies the target metric by name and selector'
-    )
 
 
 class ExternalMetricSource(BaseModel):
-    metric: MetricIdentifier = Field(
-        ..., description='metric identifies the target metric by name and selector'
+    metricName: str = Field(
+        ..., description='metricName is the name of the metric in question.'
     )
-    target: MetricTarget = Field(
-        ..., description='target specifies the target value for the given metric'
+    metricSelector: Optional[v1.LabelSelector] = Field(
+        None,
+        description='metricSelector is used to identify a specific time series within a given metric.',
+    )
+    targetAverageValue: Optional[resource.Quantity] = Field(
+        None,
+        description='targetAverageValue is the target per-pod value of global metric (as a quantity). Mutually exclusive with TargetValue.',
+    )
+    targetValue: Optional[resource.Quantity] = Field(
+        None,
+        description='targetValue is the target value of the metric (as a quantity). Mutually exclusive with TargetAverageValue.',
     )
 
 
 class ExternalMetricStatus(BaseModel):
-    current: MetricValueStatus = Field(
-        ..., description='current contains the current value for the given metric'
+    currentAverageValue: Optional[resource.Quantity] = Field(
+        None,
+        description='currentAverageValue is the current value of metric averaged over autoscaled pods.',
     )
-    metric: MetricIdentifier = Field(
-        ..., description='metric identifies the target metric by name and selector'
+    currentValue: resource.Quantity = Field(
+        ...,
+        description='currentValue is the current value of the metric (as a quantity)',
+    )
+    metricName: str = Field(
+        ...,
+        description='metricName is the name of a metric used for autoscaling in metric system.',
+    )
+    metricSelector: Optional[v1.LabelSelector] = Field(
+        None,
+        description='metricSelector is used to identify a specific time series within a given metric.',
+    )
+
+
+class ObjectMetricSource(BaseModel):
+    averageValue: Optional[resource.Quantity] = Field(
+        None,
+        description='averageValue is the target value of the average of the metric across all relevant pods (as a quantity)',
+    )
+    metricName: str = Field(
+        ..., description='metricName is the name of the metric in question.'
+    )
+    selector: Optional[v1.LabelSelector] = Field(
+        None,
+        description='selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping When unset, just the metricName will be used to gather metrics.',
+    )
+    target: CrossVersionObjectReference = Field(
+        ..., description='target is the described Kubernetes object.'
+    )
+    targetValue: resource.Quantity = Field(
+        ...,
+        description='targetValue is the target value of the metric (as a quantity).',
+    )
+
+
+class ObjectMetricStatus(BaseModel):
+    averageValue: Optional[resource.Quantity] = Field(
+        None,
+        description='averageValue is the current value of the average of the metric across all relevant pods (as a quantity)',
+    )
+    currentValue: resource.Quantity = Field(
+        ...,
+        description='currentValue is the current value of the metric (as a quantity).',
+    )
+    metricName: str = Field(
+        ..., description='metricName is the name of the metric in question.'
+    )
+    selector: Optional[v1.LabelSelector] = Field(
+        None,
+        description='selector is the string-encoded form of a standard kubernetes label selector for the given metric When set in the ObjectMetricSource, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.',
+    )
+    target: CrossVersionObjectReference = Field(
+        ..., description='target is the described Kubernetes object.'
+    )
+
+
+class PodsMetricSource(BaseModel):
+    metricName: str = Field(
+        ..., description='metricName is the name of the metric in question'
+    )
+    selector: Optional[v1.LabelSelector] = Field(
+        None,
+        description='selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping When unset, just the metricName will be used to gather metrics.',
+    )
+    targetAverageValue: resource.Quantity = Field(
+        ...,
+        description='targetAverageValue is the target value of the average of the metric across all relevant pods (as a quantity)',
+    )
+
+
+class PodsMetricStatus(BaseModel):
+    currentAverageValue: resource.Quantity = Field(
+        ...,
+        description='currentAverageValue is the current value of the average of the metric across all relevant pods (as a quantity)',
+    )
+    metricName: str = Field(
+        ..., description='metricName is the name of the metric in question'
+    )
+    selector: Optional[v1.LabelSelector] = Field(
+        None,
+        description='selector is the string-encoded form of a standard kubernetes label selector for the given metric When set in the PodsMetricSource, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.',
     )
 
 
 class MetricSpec(BaseModel):
     containerResource: Optional[ContainerResourceMetricSource] = Field(
         None,
-        description='containerResource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod of the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source. This is an alpha feature and can be enabled by the HPAContainerMetrics feature flag.',
+        description='container resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod of the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source. This is an alpha feature and can be enabled by the HPAContainerMetrics feature flag.',
     )
     external: Optional[ExternalMetricSource] = Field(
         None,
@@ -273,17 +260,13 @@ class MetricStatus(BaseModel):
 
 
 class HorizontalPodAutoscalerSpec(BaseModel):
-    behavior: Optional[HorizontalPodAutoscalerBehavior] = Field(
-        None,
-        description='behavior configures the scaling behavior of the target in both Up and Down directions (scaleUp and scaleDown fields respectively). If not set, the default HPAScalingRules for scale up and scale down are used.',
-    )
     maxReplicas: int = Field(
         ...,
         description='maxReplicas is the upper limit for the number of replicas to which the autoscaler can scale up. It cannot be less that minReplicas.',
     )
     metrics: Optional[List[MetricSpec]] = Field(
         None,
-        description='metrics contains the specifications for which to use to calculate the desired replica count (the maximum replica count across all metrics will be used).  The desired replica count is calculated multiplying the ratio between the target value and the current value by the current number of pods.  Ergo, metrics used must decrease as the pod count is increased, and vice-versa.  See the individual metric source types for more information about how each type of metric must respond. If not set, the default metric will be set to 80% average CPU utilization.',
+        description='metrics contains the specifications for which to use to calculate the desired replica count (the maximum replica count across all metrics will be used).  The desired replica count is calculated multiplying the ratio between the target value and the current value by the current number of pods.  Ergo, metrics used must decrease as the pod count is increased, and vice-versa.  See the individual metric source types for more information about how each type of metric must respond.',
     )
     minReplicas: Optional[int] = Field(
         None,
@@ -304,8 +287,8 @@ class HorizontalPodAutoscalerStatus(BaseModel):
         None,
         description='currentMetrics is the last read state of the metrics used by this autoscaler.',
     )
-    currentReplicas: Optional[int] = Field(
-        None,
+    currentReplicas: int = Field(
+        ...,
         description='currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.',
     )
     desiredReplicas: int = Field(

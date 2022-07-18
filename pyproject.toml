@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "k8s-datamodels"
-version = "1.23.8"
+version = "1.24.3"
 authors = [
   { name="Alberto Degli Esposti @Airspot", email="alberto@airspot.tech" },
 ]
