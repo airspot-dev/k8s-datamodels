@@ -8,8 +8,8 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
-from tmp.io.k8s.apimachinery.pkg.apis.meta import v1 as v1_1
-from tmp.io.k8s.apimachinery.pkg.util import intstr
+from k8s_datamodels.io.k8s.apimachinery.pkg.apis.meta import v1 as v1_1
+from k8s_datamodels.io.k8s.apimachinery.pkg.util import intstr
 from ..core import v1
 
 
